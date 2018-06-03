@@ -1,24 +1,98 @@
 // Text colors
+$color-text: var(--color-text);
+$color-text-shadow: rgba(0,0,0,0.4);
 $color-body-text: var(--color-body-text);
+$color-sale-text: var(--color-sale-text);
+$color-small-button: var(--color-small-button);
+$color-small-button-text: var(--color-small-button-text);
+$color-text-field: var(--color-text-field);
+$color-text-field-text: var(--color-text-field-text);
+$color-navigation-text: var(--color-text);
 
-// Background colors
-$color-body: var(--color-main-background);
+// Button colors
+$color-btn-primary: var(--color-button);
+$color-btn-primary-text: var(--color-button-text);
+
+// Hover and focus states
+$color-text-focus: var(--color-text-focus);
+$color-overlay-text-focus: var(--color-overlay-text-focus);
+$color-btn-primary-focus: var(--color-btn-primary-focus);
+$color-small-buton-focus: var(--color-small-button-focus);
+
+// Link buttons and secondary cta
+$color-link: $color-body-text;
+$opacity-link-hover: 0.6;
+$transition-link-hover: 0.1s cubic-bezier(0.44, 0.13, 0.48, 0.87);
+
+// Backgrounds
+$color-body: var(--color-body-bg);
+$color-bg: var(--color-body-bg);
+$color-drawer-background: rgba(0, 0, 0, 0.6);
+$color-bg-alt: var(--color-bg-alt);
+
+// Overlays
+$color-overlay-title-text: var(--color-image-overlay-text);
+$color-image-overlay: var(--color-image-overlay);
+$opacity-image-overlay: var(--opacity-image-overlay);
 
 // Placeholders
 $placeholder-color-foreground: #161d25;
 $placeholder-color-background: #f9fafb;
 
-// Other colors
-$color-accent: var(--color-accent);
-$color-border: var(--color-border);
+// Border colors
+$color-border: var(--color-borders);
+$color-border-form: var(--color-border-form);
 
 // Helper colors for form error states
-$color-disabled: #000000;
-$color-disabled-border: #000000;
-$color-error: #ff6d6d;
-$color-error-bg: #ffffff;
-$color-success: #000000;
-$color-success-bg: #000000;
+$color-disabled: #f4f4f4;
+$color-disabled-border: #f4f4f4;
+$color-error: #d20000;
+$color-error-bg: #fff8f8;
+$color-success: #19a340;
+$color-success-bg: #f8fff9;
+
+// Forms
+$color-form-text: #333;
+$color-error-input-text: $color-error;
+$input-padding-top-bottom: 10px;
+$input-padding-left-right: 18px;
+$input-padding-top-bottom-small: 8px;
+$input-padding-left-right-small: 15px;
+$input-group-height: 46px;
+$input-group-height-small: 42px;
+
+// Social icons
+$color-facebook: #3b5998;
+$color-twitter: #00aced;
+$color-pinterest: #cb2027;
+
+// Sizing variables
+$width-site: 1200px;
+$gutter-site: 55px;
+$gutter-site-mobile: 22px;
+$section-spacing: 55px;
+$section-spacing-small: 35px;
+$border-radius: 2px;
+
+// Z-index
+$z-index-dropdown : 7;
+$z-index-sub-nav: 8;
+$z-index-drawer: 9;
+$z-index-announcement-bar: 10;
+$z-index-skip-to-content: 10000; // really high to be safe of app markup
+
+// SVG
+$svg-select-icon: var(--icon-svg-select);
+
+// Drawers
+$transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
+
+// Hero slider
+$color-slideshow-arrows: #000;
+$color-slideshow-dots: #fff;
+
+$transition-text-slideshow: all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
+$transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 // Typography
 $font-heading: var(--font-heading);
@@ -27,16 +101,28 @@ $font-body-weight: var(--font-body-weight);
 $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
 
-// Transitions
-$transition-duration: 250ms;
-$transition-timing: ease-in-out;
+// Gift cards
+$color-giftcard-tooltip-fallback: #333;
+$color-giftcard-light: #fff;
+$color-giftcard-tooltip: rgba(0, 0, 0, 0.9);
+$color-giftcard-disabled: #999;
+$color-giftcard-small-text: #b3b3b3;
+$color-giftcard-shadow: rgba(0, 0, 0, 0.1);
+$color-giftcard-print-bg: #fff;
+$color-giftcard-print: #000;
+$color-giftcard-bg: #e95e61;
+
+$z-index-giftcard-image: 2;
+$z-index-giftcard-corners: 3;
+$z-index-giftcard-tooltip: 4;
+$z-index-giftcard-code: 5;
 
 // Grid
-$grid-medium: 46.85em;
-$grid-large: 61.85em;
-$grid-widescreen: 87.5em;
-$grid-max-width: 73.75em;
+$grid-medium: 750px;
+$grid-large: 990px;
+$grid-widescreen: 1400px;
 $grid-gutter: 30px;
+$grid-gutter-mobile: 22px;
 
 // Breakpoints used with the media-query mixin
 $small: 'small';

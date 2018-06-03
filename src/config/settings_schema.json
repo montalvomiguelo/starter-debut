@@ -8,25 +8,182 @@
     "theme_support_url": "https://github.com/Shopify/starter-theme/issues"
   },
   {
-    "name": "Colors",
+    "name": {
+      "en": "Colors",
+      "de": "Farben",
+      "fr": "Couleurs"
+    },
     "settings": [
       {
+        "type": "header",
+        "content": {
+          "en": "Text and buttons",
+          "de": "Text und Buttons",
+          "fr": "Texte et boutons"
+        }
+      },
+      {
         "type": "color",
-        "id": "color_accent",
-        "label": "Accent",
-        "default": "#c4cdd5",
-        "info": "Buttons and special ornaments"
+        "id": "color_text",
+        "label": {
+          "en": "Headings and links",
+          "de": "Titel und Links",
+          "fr": "En-têtes et liens"
+        },
+        "default": "#3d4246"
       },
       {
         "type": "color",
         "id": "color_body_text",
-        "label": "Text",
-        "default": "#161d25"
+        "label": {
+          "en": "Body text",
+          "de": "Body-Text",
+          "fr": "Corps du texte"
+        },
+        "default": "#69727b"
       },
       {
         "type": "color",
-        "id": "color_main_bg",
-        "label": "Background",
+        "id": "color_sale_text",
+        "label": {
+          "en": "Sale text",
+          "de": "Verkaufstext",
+          "fr": "Texte de vente"
+        },
+        "default": "#557B97"
+      },
+      {
+        "type": "color",
+        "id": "color_borders",
+        "label": {
+          "en": "Borders and lines",
+          "de": "Rahmen und Linien",
+          "fr": "Bordures et lignes"
+        },
+        "default": "#e8e9eb"
+      },
+      {
+        "type": "color",
+        "id": "color_button",
+        "label": {
+          "en": "Buttons",
+          "de": "Buttons",
+          "fr": "Boutons"
+        },
+        "default": "#557B97"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": {
+          "en": "Button text",
+          "de": "Button-Text",
+          "fr": "Texte des boutons"
+        },
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_small_button",
+        "label": {
+          "en": "Small buttons",
+          "de": "Kleine Buttons",
+          "fr": "Petits boutons"
+        },
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_small_button_text",
+        "label": {
+          "en": "Small button text",
+          "de": "Text auf kleinen Buttons",
+          "fr": "Texte des petits boutons"
+        },
+        "default": "#3d4246"
+      },
+      {
+        "type": "color",
+        "id": "color_text_field",
+        "label": {
+          "en": "Text fields",
+          "de": "Textfeld",
+          "fr": "Couleur de fond des champs de texte"
+        },
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_text_field_text",
+        "label": {
+          "en": "Text field text",
+          "de": "Text auf Textfeld",
+          "fr": "Couleur du texte des champs de texte"
+        },
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Image overlays",
+          "de": "Text auf Fotos",
+          "fr": "Superposition d'image"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_image_overlay_text",
+        "label": {
+          "en": "Text",
+          "de": "Textfarbe",
+          "fr": "Couleur du texte"
+        },
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_image_overlay",
+        "label": {
+          "en": "Background",
+          "de": "Schriftfarbe",
+          "fr": "Couleur de fond"
+        },
+        "default": "#3d4246"
+      },
+      {
+        "type": "range",
+        "id": "image_overlay_opacity",
+        "label": {
+          "en": "Opacity",
+          "de": "Opazität",
+          "fr": "Opacité"
+        },
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": {
+          "en": "%",
+          "de": "%",
+          "fr": " %"
+        },
+        "default": 40
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Background",
+          "de": "Schriftfarbe",
+          "fr": "Arrière-plan"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": {
+          "en": "Background",
+          "de": "Schriftfarbe",
+          "fr": "Couleur de fond"
+        },
         "default": "#fff"
       }
     ]

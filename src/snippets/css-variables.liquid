@@ -9,10 +9,45 @@
   {{ font_body_bold_italic | font_face }}
 
   :root {
-    --color-accent: {{ settings.color_accent }};
+    --color-text: {{ settings.color_text }};
     --color-body-text: {{ settings.color_body_text }};
-    --color-main-background: {{ settings.color_main_bg }};
-    --color-border: {{ settings.color_body_text | color_lighten: 50 }};
+    --color-sale-text: {{ settings.color_sale_text }};
+    --color-borders: {{ settings.color_borders }};
+    --color-button: {{ settings.color_button }};
+    --color-button-text: {{ settings.color_button_text }};
+    --color-small-button: {{ settings.color_small_button }};
+    --color-small-button-text: {{ settings.color_small_button_text }};
+    --color-text-field: {{ settings.color_text_field }};
+    --color-text-field-text: {{ settings.color_text_field_text }};
+    --color-image-overlay-text: {{ settings.color_image_overlay_text }};
+    --color-image-overlay: {{ settings.color_image_overlay }};
+    --color-body-bg: {{ settings.color_body_bg }};
+    --color-bg-alt: {{ settings.color_body_text | color_modify: 'alpha', 0.05 }};
+    --color-border-form: {{ settings.color_text | color_to_rgb | color_modify: 'alpha', 0.85 }};
+
+    --opacity-image-overlay: {{ settings.image_overlay_opacity | divided_by: 100.00 }};
+
+    {%- assign focus_states = 'color-text-focus color-overlay-text-focus color-btn-primary-focus color-small-button-focus' | split: ' ' -%}
+    {%- assign base_settings = 'color_text color_image_overlay_text color_button color_small_button' | split: ' ' -%}
+
+    {%- for state in focus_states -%}
+      {%- assign setting = base_settings[forloop.index0] -%}
+      {%- assign color = settings[setting] -%}
+      {%- assign color_brightness = color | color_brightness -%}
+      {%- assign focus_color = '' -%}
+
+      {%- if color_brightness <= 25 -%}
+        {%- assign focus_color = color | color_lighten: 25 -%}
+      {%- elsif color_brightness <= 64 -%}
+        {%- assign focus_color = color | color_lighten: 15 -%}
+      {%- else -%}
+        {%- assign focus_color = color | color_darken: 10 -%}
+      {%- endif -%}
+
+      --{{ state }}: {{ focus_color }};
+    {%- endfor -%}
+
+    --icon-svg-select: url({{ 'icon-select.svg' | asset_url }});
 
     --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
     --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
