@@ -95,11 +95,25 @@ $transition-text-slideshow: all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 $transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 // Typography
-$font-heading: var(--font-heading);
-$font-body: var(--font-body);
-$font-body-weight: var(--font-body-weight);
-$font-body-style: var(--font-body-style);
-$font-body-bold-weight: var(--font-body-bold-weight);
+$font-weight-body--bold: var(--font-weight-body--bold);
+$font-weight-header--bold: var(--font-weight-header--bold);
+
+$font-stack-header: var(--font-stack-header);
+$font-style-header: var(--font-style-header);
+$font-weight-header: var(--font-weight-header);
+
+$font-stack-body: var(--font-stack-body);
+$font-style-body: var(--font-style-body);
+$font-weight-body: var(--font-weight-body);
+
+$font-size-header: var(--font-size-header);
+$font-bold-titles: var(--font-bold-titles);
+
+$font-size-base: var(--font-size-base);
+
+$font-stack-cart-notification: var(--font-stack-cart-notification);
+
+$font-size-mobile-input: var(--font-size-mobile-input);
 
 // Gift cards
 $color-giftcard-tooltip-fallback: #333;

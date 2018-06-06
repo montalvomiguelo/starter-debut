@@ -1,12 +1,24 @@
 <style>
-  {{ settings.font_heading | font_face }}
-  {{ settings.font_body | font_face }}
+  {%- assign header_font = settings.type_header_font -%}
+  {%- assign base_font = settings.type_base_font -%}
+  {%- assign font_bold_titles = 0 -%}
 
-  {%- assign font_body_bold = settings.font_body | font_modify: 'weight', 'bolder' -%}
-  {%- assign font_body_bold_italic = font_body_bold | font_modify: 'style', 'italic' -%}
+  {{ header_font | font_face }}
+  {{ base_font | font_face }}
 
-  {{ font_body_bold | font_face }}
-  {{ font_body_bold_italic | font_face }}
+  {%- if settings.type_bold_product_titles -%}
+    {%- assign header_font_bold = header_font | font_modify: 'weight', 'bolder' -%}
+    {%- assign font_bold_titles = 1 -%}
+  {%- endif -%}
+
+  {%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
+  {%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+  {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+
+  {{ header_font_bold | font_face }}
+  {{ base_font_bold | font_face }}
+  {{ base_font_italic | font_face }}
+  {{ base_font_bold_italic | font_face }}
 
   :root {
     --color-text: {{ settings.color_text }};
@@ -49,10 +61,24 @@
 
     --icon-svg-select: url({{ 'icon-select.svg' | asset_url }});
 
-    --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
-    --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
-    --font-body-weight: {{ settings.font_body.weight }};
-    --font-body-style: {{ settings.font_body.style }};
-    --font-body-bold-weight: {{ font_body_bold.weight | default: 'bold' }};
+    --font-weight-body--bold: {{ base_font_bold.weight | default: 700 }};
+    --font-weight-header--bold: {{ header_font_bold.weight | default: 700 }};
+
+    --font-stack-header: {{ header_font.family }}, {{ header_font.fallback_families }};
+    --font-style-header: {{ header_font.style }};
+    --font-weight-header: {{ header_font.weight }};
+
+    --font-stack-body: {{ base_font.family }}, {{ base_font.fallback_families }};
+    --font-style-body: {{ base_font.style }};
+    --font-weight-body: {{ base_font.weight }};
+
+    --font-size-header: {{ settings.type_header_base_size }}px;
+    --font-bold-titles: {{ font_bold_titles }};
+
+    --font-size-base: {{ settings.type_base_size }}px;
+
+    --font-stack-cart-notification: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --font-size-mobile-input: 16px;
   }
 </style>
