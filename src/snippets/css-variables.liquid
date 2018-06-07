@@ -59,6 +59,8 @@
       --{{ state }}: {{ focus_color }};
     {%- endfor -%}
 
+    --color-border-form-focus: {{ settings.color_text | color_darken: 10 | color_to_rgb | color_modify: 'alpha', 0.85 }};
+
     --icon-svg-select: url({{ 'icon-select.svg' | asset_url }});
 
     --font-weight-body--bold: {{ base_font_bold.weight | default: 700 }};
