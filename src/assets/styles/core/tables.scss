@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: $gutter-site / 2;
+}
+
+th {
+  font-family: $font-stack-header;
+  font-style: $font-style-header;
+  font-weight: $font-weight-body--bold;
+}
+
+th,
+td {
+  text-align: left;
+  border: 1px solid $color-border;
+  padding: 10px 14px;
+  overflow: auto;
+  appearance: none;
+}
