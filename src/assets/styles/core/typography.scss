@@ -172,3 +172,21 @@ h6 {
 .h6 {
   @extend h6;
 }
+
+a {
+  color: $color-text;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $color-text-focus;
+  }
+
+  &.classic-link {
+    text-decoration: underline;
+  }
+}
+
+a[href^="tel"] {
+  color: inherit;
+}

@@ -1,11 +1,127 @@
-.button {
-  display: inline-block;
-  vertical-align: middle;
-  width: auto;
-  border: 0;
-  text-align: center;
-  white-space: nowrap;
-  text-decoration: none;
+.btn {
   user-select: none;
   appearance: none;
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  padding: $input-padding-top-bottom-small $input-padding-left-right-small;
+  background-color: $color-btn-primary;
+  color: $color-btn-primary-text;
+  font-family: $font-stack-header;
+  font-style: $font-style-header;
+  font-weight: $font-weight-header;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: normal;
+  font-size: $font-size-base - 2;
+
+  @include media-query($medium-up) {
+    padding: $input-padding-top-bottom $input-padding-left-right;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-btn-primary-text;
+    background-color: $color-btn-primary-focus;
+  }
+
+  .icon-arrow-right,
+  .icon-arrow-left {
+    height: 9px;
+  }
+
+  &[disabled] {
+    cursor: default;
+    opacity: 0.5;
+    background-color: $color-btn-primary;
+    color: $color-btn-primary-text;
+  }
+}
+
+.btn--secondary {
+  background-color: $color-small-button;
+  color: $color-small-button-text;
+  border: none;
+
+  &:hover,
+  &:focus {
+    color: $color-small-button-text;
+    background-color: $color-small-button-focus;
+  }
+}
+
+.btn--secondary-accent {
+  background-color: $color-body;
+  color: $color-btn-primary;
+  border-color: $color-btn-primary;
+
+  &:hover,
+  &:focus {
+    background-color:$color-body;
+    color: $color-btn-primary-focus;
+    border-color: $color-btn-primary-focus;
+  }
+}
+
+.btn--small {
+  padding: 8px 10px;
+  font-size: em(12);
+  line-height: 1;
+}
+
+/*================ Button variations ================*/
+@include media-query($small) {
+  .btn--small-wide {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.btn--link {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  color: $color-text;
+  text-align: left;
+
+  &:hover,
+  &:focus {
+    color: $color-text-focus;
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+}
+
+.btn--narrow {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn--disabled {
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.btn--has-icon-after {
+  .icon {
+    margin-left: 10px;
+  }
+}
+
+.btn--has-icon-before {
+  .icon {
+    margin-right: 10px;
+  }
 }
