@@ -190,3 +190,41 @@ a {
 a[href^="tel"] {
   color: inherit;
 }
+
+p {
+  color: $color-body-text;
+  margin: 0 0 ($section-spacing-small / 1.8);
+
+  @include media-query($small) {
+    font-size: em($font-size-base - 1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li {
+  list-style: none;
+}
+
+.list--inline {
+  padding: 0;
+  margin: 0;
+
+  & > li {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+}
