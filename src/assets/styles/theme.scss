@@ -21,6 +21,7 @@
 @import './core/rte';
 @import './core/typography';
 @import './core/tables';
+@import './core/grid';
 
 // Components
 @import './components/buttons';
@@ -28,12 +29,16 @@
 @import './components/icons';
 @import './components/placeholders';
 @import './components/responsive-images';
+@import './components/site-nav';
+@import './components/search-header';
+@import './components/search-bar';
 
 // Sections
 @import './sections/blog-posts';
 @import './sections/collection-list';
 @import './sections/featured-collection';
 @import './sections/image-with-text';
+@import './sections/site-header';
 
 // Templates
 @import './templates/gift_card';

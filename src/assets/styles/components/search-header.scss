@@ -1,0 +1,59 @@
+/*============================================================================
+  The search submit button has pointer-events: none which also
+  effects the :hover style. This forces the style to be applied.
+==============================================================================*/
+.search-header__input:hover + .btn--link {
+  color: $color-text-focus;
+}
+
+.search-header {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: calc(30em / 16);
+  vertical-align: middle;
+
+  &.search--focus {
+    max-width: 250px;
+  }
+}
+
+.search-header__input {
+  cursor: pointer;
+}
+
+.search--focus {
+  .search-header__input {
+    outline: none;
+    border-color: $color-border-form;
+    cursor: auto;
+  }
+
+  .search-header__submit {
+    pointer-events: auto;
+  }
+}
+
+.search-header__submit {
+  pointer-events: none;
+}
+
+.search-header,
+.search-header__submit {
+  transition: all 0.35s cubic-bezier(0.29, 0.63, 0.44, 1);
+}
+
+.no-svg {
+  .site-header__search {
+    display: inline-block;
+  }
+
+  .search-header {
+    max-width: none;
+  }
+
+  .search__input {
+    width: auto;
+    padding-left: 60px;
+  }
+}

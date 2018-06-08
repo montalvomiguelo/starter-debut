@@ -13,6 +13,13 @@ html {
   @include clearfix();
   max-width: $width-site;
   margin: 0 auto;
+  padding-left: $gutter-site;
+  padding-right: $gutter-site;
+
+  @include media-query($small) {
+    padding-left: $gutter-site-mobile;
+    padding-right: $gutter-site-mobile;
+  }
 }
 
 .main-content {

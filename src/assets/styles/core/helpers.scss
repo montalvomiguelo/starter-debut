@@ -6,21 +6,21 @@
   @include visually-hidden;
 }
 
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.visually-hidden--inline {
+  margin: 0;
+  height: 1em;
+}
+
+.visually-hidden--static {
+  position: static !important;
+}
+
 .js-focus-hidden:focus {
   outline: none;
-}
-
-.label-hidden {
-  @include visually-hidden;
-
-  // No placeholders, so force show labels
-  .no-placeholder & {
-    @include visually-shown;
-  }
-}
-
-.visually-shown {
-  @include visually-shown;
 }
 
 // Only show when JS is not supported
@@ -39,6 +39,34 @@
   }
 }
 
+.hide {
+  display: none !important;
+}
+
+.label-hidden {
+  @include visually-hidden;
+
+  // No placeholders, so force show labels
+  .no-placeholder & {
+    @include visually-shown;
+  }
+}
+
+.visually-shown {
+  @include visually-shown;
+}
+
+// Skip to content button
+// Overrides .visually-hidden when focused
+.skip-link:focus {
+  @include visually-shown(absolute);
+  z-index: 10000;
+  padding: $grid-gutter / 2;
+  background-color: $color-body;
+  color: $color-body-text;
+  transition: none;
+}
+
 // Only show when browser cookies are not supported
 .supports-no-cookies:not(html) {
   display: none;
@@ -55,23 +83,7 @@
   }
 }
 
-// Skip to content button
-// Overrides .visually-hidden when focused
-.skip-link:focus {
-  @include visually-shown(absolute);
-  z-index: 10000;
-  padding: $grid-gutter / 2;
-  background-color: $color-body;
-  color: $color-body-text;
-  transition: none;
-}
-
 // Hide outline on focus for elements which are given focus by JS
 [tabindex='-1']:focus {
   outline: none;
-}
-
-.hide {
-  /* stylelint-disable declaration-no-important */
-  display: none !important;
 }

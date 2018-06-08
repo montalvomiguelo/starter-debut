@@ -1,0 +1,121 @@
+.site-nav {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  margin: 25px 0;
+
+  a {
+    padding: 3px 10px;
+  }
+}
+
+.site-nav--centered {
+  padding-bottom: $gutter-site-mobile;
+}
+
+/*================ Site Nav Links ================*/
+.site-nav__link {
+  display: block;
+  white-space: nowrap;
+
+  .site-nav--centered & {
+    padding-top: 0;
+  }
+
+  .icon-chevron-down {
+    width: calc(8em / 16);
+    height: calc(8em / 16);
+    margin-left: calc(2em / 16);
+  }
+
+  &.site-nav--active-dropdown {
+    border: 1px solid $color-border;
+    border-bottom: 1px solid transparent;
+    z-index: 2;
+  }
+}
+
+.site-nav__link--button {
+  border: none;
+  background-color: transparent;
+  padding: 3px 10px;
+
+  @include media-query($medium-down) {
+    font-size: $font-size-base;
+  }
+
+  &:focus,
+  &:hover {
+    color: $color-text-focus;
+  }
+}
+
+/*================ Dropdowns ================*/
+.site-nav--has-dropdown {
+  position: relative;
+}
+
+.site-nav--has-centered-dropdown {
+  position: static;
+}
+
+.site-nav__dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  padding: 11px 30px 11px 0;
+  margin: 0;
+  z-index: $z-index-dropdown;
+  text-align: left;
+  border: 1px solid $color-border;
+  background: $color-bg;
+  left: -1px;
+  top: 41px;
+
+  .site-nav__link {
+    padding: 4px 15px;
+  }
+
+  .site-nav--active-dropdown & {
+    display: block;
+  }
+
+  li {
+    display: block;
+  }
+}
+
+// Centered dropdown
+.site-nav__dropdown--centered {
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: center;
+}
+
+/*================ Child list ================*/
+.site-nav__childlist {
+  display: inline-block;
+  border: 1px solid $color-border;
+  background: $color-bg;
+  padding: 11px 17px;
+  text-align: left;
+}
+
+.site-nav__childlist-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  margin-bottom: -15px;
+}
+
+.site-nav__childlist-item {
+  flex: 0 1 auto;
+  margin-bottom: 15px;
+}
+
+.site-nav__child-link--parent {
+  font-weight: $font-weight-body--bold;
+  margin: 4px 0;
+}
