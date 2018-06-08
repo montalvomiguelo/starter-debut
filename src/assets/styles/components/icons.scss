@@ -1,17 +1,13 @@
 .icon {
   display: inline-block;
-  vertical-align: middle;
   width: 20px;
   height: 20px;
+  vertical-align: middle;
   fill: currentColor;
 
   .no-svg & {
     display: none;
   }
-}
-
-.icon--wide {
-  width: 40px;
 }
 
 svg,
@@ -24,10 +20,6 @@ symbol {
     path,
     polygon,
     polyline,
-    img {
-      max-width: 100%;
-    }
-
     rect {
       fill: inherit;
       stroke: inherit;
@@ -37,11 +29,17 @@ symbol {
 
 // A generic way to visually hide content while
 // remaining accessible to screen readers (h5bp.com)
-.icon-fallback-text {
-  @include visually-hidden;
+.icon__fallback-text {
+  @extend .visually-hidden;
 
   .no-svg & {
-    @include visually-shown(static);
+    // sass-lint:disable no-important
+    position: static !important;
+    overflow: inherit;
+    clip: none;
+    height: auto;
+    width: auto;
+    margin: 0;
   }
 }
 
@@ -49,4 +47,42 @@ symbol {
 .payment-icons {
   user-select: none;
   cursor: default;
+
+  @include media-query($small) {
+    line-height: 40px;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon-shopify_pay {
+    width: 75px;
+    height: auto;
+  }
+
+  .icon-klarna {
+    width: 48px;
+    height: auto;
+  }
+
+  .icon-google_pay {
+    width: 50px;
+  }
+}
+
+// Social icons
+.social-icons .icon {
+  width: 23px;
+  height: 23px;
+
+  @include media-query($medium-up) {
+    width: 25px;
+    height: 25px;
+  }
+
+  &.icon--wide {
+    width: 40px;
+  }
 }
