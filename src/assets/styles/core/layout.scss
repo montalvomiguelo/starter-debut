@@ -31,10 +31,14 @@ html {
   }
 }
 
-.section-header {
-  margin-bottom: $section-spacing-small;
+.page-container {
+  transition: $transition-drawer;
+  position: relative;
+  overflow: hidden;
 
   @include media-query($medium-up) {
-    margin-bottom: $section-spacing;
+    // Prevent mobile menu inline styles from overriding desktop styles
+    // sass-lint:disable no-important
+    transform: translate3d(0, 0, 0);
   }
 }

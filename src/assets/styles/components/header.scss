@@ -1,0 +1,7 @@
+.section-header {
+  margin-bottom: $section-spacing-small;
+
+  @include media-query($medium-up) {
+    margin-bottom: $section-spacing;
+  }
+}

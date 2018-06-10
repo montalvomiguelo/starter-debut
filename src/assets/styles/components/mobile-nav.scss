@@ -1,0 +1,128 @@
+.mobile-nav {
+  display: block;
+  transform: translate3d(0, 0, 0);
+  transition: $transition-drawer;
+
+  .sub-nav--is-open & {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .third-nav--is-open & {
+    transform: translate3d(-200%, 0, 0);
+  }
+}
+
+.mobile-nav__link,
+.mobile-nav__sublist-link {
+  display: block;
+  width: 100%;
+  padding: $nav-button-padding ($nav-button-padding * 2);
+  font-size: $font-size-mobile-input;
+}
+
+.mobile-nav__link {
+  position: relative;
+}
+
+.mobile-nav__sublist-link:not(.mobile-nav__sublist-header) {
+  padding-left: $return-button-width + $nav-button-padding;
+  padding-right: ($nav-button-padding * 2);
+}
+
+.mobile-nav__item {
+  display: block;
+  width: 100%;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 12px;
+    width: 10px;
+    margin: -6px 0 0 -5px;
+  }
+}
+
+.mobile-nav__return {
+  border-right: 1px solid $color-border;
+}
+
+.mobile-nav__return-btn {
+  position: relative;
+  padding: 24px 0;
+  width: $return-button-width;
+}
+
+.mobile-nav__icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-left: $gutter-site-mobile;
+  padding-right: $gutter-site-mobile;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mobile-nav__table {
+  display: table;
+  width: 100%;
+}
+
+.mobile-nav__table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  width: 1%;
+  text-align: left;
+  white-space: normal;
+}
+
+.mobile-nav__toggle-button {
+  padding: 20px 15px;
+}
+
+.mobile-nav__dropdown {
+  position: absolute;
+  background-color: $color-body;
+  z-index: $z-index-sub-nav;
+  width: 100%;
+  top: 0;
+  right: -100%;
+  display: none;
+
+  .is-active + & {
+    display: block;
+    opacity: 1;
+  }
+
+  // Need the transition so `prepareTransition` removes class
+  &.is-closing {
+    transition: $transition-drawer;
+    opacity: 0.99;
+  }
+
+  .mobile-nav__sublist-header {
+    font-family: $font-stack-header;
+    font-style: $font-style-header;
+    font-weight: $font-weight-header;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: $nav-button-padding;
+  }
+
+  .mobile-nav__sublist-header--main-nav-parent {
+    color: $color-body-text;
+  }
+}
+
+.mobile-nav--open {
+  .icon-close {
+    display: none;
+  }
+}
+
+.mobile-nav--close {
+  .icon-hamburger {
+    display: none;
+  }
+}

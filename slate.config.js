@@ -13,8 +13,20 @@ module.exports = {
   },
   slateTools: {
     extends: {
-      dev: {resolve: {alias}},
-      prod: {resolve: {alias}},
+      dev: {
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('prepare-transition/preparetransition.js'),
+              use: 'imports-loader?$=jquery,jQuery=jquery',
+            }
+          ]
+        }
+      },
+      prod: {
+        resolve: {alias}
+      },
     },
   },
 };

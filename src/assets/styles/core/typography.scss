@@ -196,7 +196,7 @@ p {
   margin: 0 0 ($section-spacing-small / 1.8);
 
   @include media-query($small) {
-    font-size: em($font-size-base - 1);
+    font-size: $font-size-base - 1;
   }
 
   &:last-child {

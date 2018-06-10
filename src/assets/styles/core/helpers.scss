@@ -87,3 +87,12 @@
 [tabindex='-1']:focus {
   outline: none;
 }
+
+// Borders
+.border-bottom {
+  border-bottom: 1px solid $color-border;
+}
+
+.border-top {
+  border-top: 1px solid $color-border;
+}
