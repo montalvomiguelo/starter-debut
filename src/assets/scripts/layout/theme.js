@@ -13,6 +13,9 @@ import {pageLinkFocus} from '@shopify/theme-a11y';
 import {cookiesEnabled} from '@shopify/theme-cart';
 import {wrapTable, wrapIframe} from '@shopify/theme-rte';
 
+import sections from '@shopify/theme-sections';
+import '../sections/header.js';
+
 window.slate = window.slate || {};
 window.theme = window.theme || {};
 
@@ -51,4 +54,6 @@ $(document).ready(() => {
       'supports-cookies',
     );
   }
+
+  sections.load('header');
 });
