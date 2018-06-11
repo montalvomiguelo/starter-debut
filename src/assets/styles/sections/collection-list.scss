@@ -1,19 +1,4 @@
-.collection-list {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: $width-site;
-}
-
-.collection-list-item {
-  flex: 1 1 percentage(1 / 3);
-  height: 100%;
-  text-align: center;
-}
-
-.collection-list__image {
-  min-width: 320px;
-}
-
-.collection-list__title {
-  flex-basis: 100%;
+.collection-grid {
+  margin-bottom: -$gutter-site-mobile;
+  overflow: auto;
 }
