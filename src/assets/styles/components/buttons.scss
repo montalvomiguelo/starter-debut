@@ -125,3 +125,27 @@
     margin-right: 10px;
   }
 }
+
+.btn--share {
+  margin-right: 5px;
+  margin-bottom: 10px;
+
+  .icon {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+
+  .icon-facebook {
+    fill: $color-facebook;
+  }
+
+  .icon-twitter {
+    fill: $color-twitter;
+  }
+
+  .icon-pinterest {
+    fill: $color-pinterest;
+  }
+}

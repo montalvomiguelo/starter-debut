@@ -1,0 +1,117 @@
+.product-single {
+  // prevent scroll anchoring within element
+  overflow-anchor: none;
+}
+
+.product-single__title {
+  margin-bottom: 0;
+}
+
+.product-single__description {
+  margin-top: $grid-gutter;
+}
+
+.product-single__thumbnail {
+  display: block;
+  margin: -2px 0 8px;
+  min-height: 44px;
+}
+
+.product-single__thumbnail-image {
+  max-width: 100%;
+  display: block;
+  border: 2px solid transparent;
+
+  .active-thumb & {
+    border-color: $color-text;
+  }
+}
+
+@include media-query ($medium-up) {
+  .product-single__thumbnails {
+    margin-top: $grid-gutter;
+  }
+}
+
+@include media-query ($small) {
+  .product-single__photos {
+    margin-bottom: $grid-gutter;
+  }
+  .product-single__photo--has-thumbnails {
+    margin-bottom: $grid-gutter;
+  }
+}
+
+.product-single__photos--full {
+  margin-bottom: $grid-gutter;
+}
+
+.product-single__photo-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+
+// Prevent reflow when image loads
+.product-single__photo {
+  margin: 0 auto;
+  min-height: 1px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+@include media-query($small) {
+  .template-product .main-content {
+    padding-top: $grid-gutter-mobile;
+  }
+  .thumbnails-slider--active {
+    .product-single__thumbnails {
+      display: none;
+      &.slick-initialized,
+      .ie9 & {
+        display: block;
+        margin: 0 auto;
+        max-width: 75%;
+      }
+    }
+  }
+  .product-single__photos {
+    position: relative;
+  }
+  .thumbnails-wrapper {
+    position: relative;
+    top: 30px;
+    text-align: center;
+    margin: 0 2px 30px 2px;
+  }
+  .thumbnails-slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .thumbnails-slider__prev {
+    left: -20px;
+  }
+  .thumbnails-slider__next {
+    right: -20px;
+  }
+  .product-single__thumbnails-item {
+    display: inline-block;
+    padding-bottom: 10px;
+    width: 72px;
+    float: none;
+    vertical-align: middle;
+
+    .slick-slider & {
+      float: left;
+    }
+    .thumbnails-slider--active & {
+      padding: 5px 0;
+    }
+  }
+  .product-single__thumbnail {
+    margin: 0 auto;
+    width: 50px;
+  }
+}

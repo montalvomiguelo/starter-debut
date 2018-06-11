@@ -17,18 +17,22 @@ const selectors = {
   comparePrice: '[data-compare-price]',
   comparePriceText: '[data-compare-text]',
   originalSelectorId: '[data-product-select]',
-  priceWrapper: '[data-price-wrapper]',
+  priceWrapper: '[data-price]',
   productImageWrapper: '[data-product-image-wrapper]',
   productFeaturedImage: '[data-product-featured-image]',
   productJson: '[data-product-json]',
   productPrice: '[data-product-price]',
   productThumbs: '[data-product-single-thumbnail]',
   singleOptionSelector: '[data-single-option-selector]',
+  regularPrice: '[data-regular-price]',
+  salePrice: '[data-sale-price]'
 };
 
 const cssClasses = {
   activeThumbnail: 'active-thumbnail',
   hide: 'hide',
+  productOnSale: 'price--on-sale',
+  productUnavailable: 'price--unavailable'
 };
 
 /**
@@ -59,7 +63,6 @@ sections.register('product', {
 
     this.settings = {};
     this.variants = new Variants(options);
-    this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
 
     this.$container.on(
       `variantChange${this.namespace}`,
@@ -69,27 +72,26 @@ sections.register('product', {
       `variantPriceChange${this.namespace}`,
       this.updateProductPrices.bind(this),
     );
+    this.$container.on(
+      `variantImageChange${this.namespace}`,
+      this.updateImages.bind(this),
+    );
 
-    if (this.$featuredImage.length > 0) {
-      this.$container.on(
-        `variantImageChange${this.namespace}`,
-        this.updateImages.bind(this),
-      );
-    }
+    this.setActiveThumbnail();
   },
 
   setActiveThumbnail(imageId) {
-    let newImageId = imageId;
+    const activeClass = 'active-thumb';
 
-    // If "imageId" is not defined in the function parameter, find it by the current product image
-    if (typeof newImageId === 'undefined') {
-      newImageId = $(
-        `${selectors.productImageWrapper}:not('.${cssClasses.hide}')`,
+    // If there is no element passed, find it by the current product image
+    if (typeof imageId === 'undefined') {
+      imageId = $(
+        `${selectors.productImageWrapper}:not(".${cssClasses.hide}")`,
       ).data('image-id');
     }
 
     const $thumbnail = $(
-      `${selectors.productThumbs}[data-thumbnail-id='${newImageId}']`,
+      `${selectors.productThumbs}[data-thumbnail-id="${imageId}"]`,
     );
 
     $(selectors.productThumbs)
@@ -123,22 +125,16 @@ sections.register('product', {
     const variant = evt.variant;
 
     if (variant) {
-      $(selectors.priceWrapper, this.$container).removeClass(cssClasses.hide);
+      if (variant.available) {
+        $(selectors.addToCart, this.$container).prop('disabled', false);
+        $(selectors.addToCartText, this.$container).html(theme.strings.addToCart);
+      } else {
+        $(selectors.addToCart, this.$container).prop('disabled', true);
+        $(selectors.addToCartText, this.$container).html(theme.strings.soldOut);
+      }
     } else {
       $(selectors.addToCart, this.$container).prop('disabled', true);
-      $(selectors.addToCartText, this.$container).html(
-        theme.strings.unavailable,
-      );
-      $(selectors.priceWrapper, this.$container).addClass(cssClasses.hide);
-      return;
-    }
-
-    if (variant.available) {
-      $(selectors.addToCart, this.$container).prop('disabled', false);
-      $(selectors.addToCartText, this.$container).html(theme.strings.addToCart);
-    } else {
-      $(selectors.addToCart, this.$container).prop('disabled', true);
-      $(selectors.addToCartText, this.$container).html(theme.strings.soldOut);
+      $(selectors.addToCartText, this.$container).html(theme.strings.unavailable);
     }
   },
 
@@ -158,24 +154,42 @@ sections.register('product', {
    */
   updateProductPrices(evt) {
     const variant = evt.variant;
-    const $comparePrice = $(selectors.comparePrice, this.$container);
-    const $compareEls = $comparePrice.add(
-      selectors.comparePriceText,
-      this.$container,
-    );
 
-    $(selectors.productPrice, this.$container).html(
-      formatMoney(variant.price, theme.moneyFormat),
-    );
+    const $priceContainer = $(selectors.priceWrapper, this.$container);
+    const $regularPrice = $(selectors.regularPrice, $priceContainer);
+    const $salePrice = $(selectors.salePrice, $priceContainer);
 
+    // Reset product price state
+    $priceContainer
+      .removeClass(cssClasses.productUnavailable)
+      .removeClass(cssClasses.productOnSale)
+      .removeAttr('aria-hiden');
+
+   // Unavailable
+    if (!variant) {
+      $priceContainer
+        .addClass(cssClasses.productUnavailable)
+        .attr('aria-hidden', true);
+      return;
+    }
+
+    // On sale
     if (variant.compare_at_price > variant.price) {
-      $comparePrice.html(
-        formatMoney(variant.compare_at_price, theme.moneyFormat),
+      $regularPrice.html(
+        formatMoney(
+          variant.compare_at_price,
+          theme.moneyFormat
+        )
       );
-      $compareEls.removeClass(cssClasses.hide);
+      $salePrice.html(
+        formatMoney(variant.price, theme.moneyFormat)
+      );
+      $priceContainer.addClass(cssClasses.productOnSale);
     } else {
-      $comparePrice.html('');
-      $compareEls.addClass(cssClasses.hide);
+      // Regular price
+      $regularPrice.html(
+        formatMoney(variant.price, theme.moneyFormat)
+      );
     }
   },
 

@@ -13,15 +13,14 @@
 @import './tools/functions';
 
 // Core
-@import './core/forms';
 @import './core/helpers';
 @import './core/layout';
 @import './core/media';
 @import './core/responsive-tables';
 @import './core/rte';
 @import './core/typography';
+@import './core/forms';
 @import './core/tables';
-@import './core/grid';
 @import './core/grid';
 
 // Components
@@ -44,6 +43,14 @@
 @import './components/grid-view-item';
 @import './components/price';
 @import './components/product-card';
+@import './components/product-single';
+@import './components/feature-row';
+@import './components/product-form';
+@import './components/social-sharing';
+@import './components/share-title';
+@import './components/product-featured-img';
+@import './components/product';
+@import './components/price-item';
 
 // Sections
 @import './sections/blog-posts';

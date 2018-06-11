@@ -1,0 +1,15 @@
+.price-item {
+  font-weight: $font-weight-header;
+}
+
+.price-item--regular {
+  .price--on-sale & {
+    text-decoration: line-through;
+  }
+}
+
+.price-item__label {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: $font-weight-header;
+}
