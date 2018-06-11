@@ -1,0 +1,72 @@
+.drawer {
+  // sass-lint:disable no-misspelled-properties
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: $z-index-drawer;
+  background-color: $color-bg;
+  transition: $transition-drawer;
+
+  input[type="text"],
+  textarea {
+    background-color: $color-bg;
+    color: $color-text;
+  }
+}
+
+.js-drawer-open {
+  overflow: hidden;
+}
+
+.drawer--top {
+  width: 100%;
+
+  .js-drawer-open-top & {
+    transform: translateY(100%);
+    display: block;
+  }
+}
+
+.drawer-page-content::after {
+  visibility: hidden;
+  opacity: 0;
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-drawer-background;
+  z-index: $z-index-drawer - 1;
+  transition: $transition-drawer;
+
+  .js-drawer-open & {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.drawer__title,
+.drawer__close {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.drawer__close-button {
+  background: none;
+  border: 0 none;
+  position: relative;
+  right: -15px;
+  height: 100%;
+  width: 60px;
+  padding: 0 20px;
+  color: inherit;
+  font-size: 18px;
+
+  &:active,
+  &:focus {
+    background-color: darken($color-drawer-background, 5%);
+  }
+}

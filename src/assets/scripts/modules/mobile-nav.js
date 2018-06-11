@@ -74,6 +74,8 @@ const MobileNav = function() {
       transform: `translate3d(0, ${cache.$mobileNavContainer[0].scrollHeight}px, 0)`
     });
 
+    $(document).off('focusin');
+
     trapFocus({
       $container: cache.$sectionHeader,
       $elementToFocus: cache.$mobileNavToggle,

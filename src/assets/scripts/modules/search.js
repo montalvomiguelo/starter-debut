@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import Drawer from '../global/drawer';
+import MobileNav from '../modules/mobile-nav';
 
 const Search = function() {
 
@@ -36,11 +38,55 @@ const Search = function() {
       return;
     }
 
+    initDrawer();
+
     $(selectors.searchHeaderInput)
       .add(selectors.searchHeaderSubmit)
       .on('focus blur', () => {
         $(selectors.searchHeader).toggleClass(classes.focus);
       });
+
+    $(selectors.siteHeaderSearchToggle).on('click', () => {
+      const searchHeight = $(selectors.siteHeader).outerHeight();
+      const searchOffset = $(selectors.siteHeader).offset().top - searchHeight;
+
+      $(selectors.searchDrawer).css({
+        height: `${searchHeight}px`,
+        top: `${searchOffset}px`
+      });
+    });
+  }
+
+  function initDrawer() {
+    // Add required classes to HTML
+    $('#PageContainer').addClass('drawer-page-content');
+    $('.js-drawer-open-top')
+      .attr('aria-controls', 'SearchDrawer')
+      .attr('aria-expanded', 'false')
+      .attr('aria-haspopup', 'dialog');
+
+    theme.SearchDrawer = new Drawer('SearchDrawer', 'top', {
+      onDrawerOpen: searchDrawerFocus,
+      onDrawerClose: searchDrawerFocusClose
+    });
+  }
+
+  function searchDrawerFocus() {
+    searchFocus($(selectors.searchDrawerInput));
+
+    if ($(selectors.mobileNavWrapper).hasClass(classes.mobileNavIsOpen)) {
+      MobileNav.closeMobileNav();
+    }
+  }
+
+  function searchFocus($el) {
+    $el.focus();
+    // set selection range hack for iOS
+    $el[0].setSelectionRange(0, $el[0].value.length);
+  }
+
+  function searchDrawerFocusClose() {
+    $(selectors.siteHeaderSearchToggle).focus();
   }
 
   return {
