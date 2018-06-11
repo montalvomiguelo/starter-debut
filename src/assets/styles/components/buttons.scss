@@ -18,7 +18,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: normal;
-  font-size: $font-size-base - 2;
+  font-size: calc(#{$font-size-base} - 2px);
 
   @include media-query($medium-up) {
     padding: $input-padding-top-bottom $input-padding-left-right;

@@ -1,0 +1,126 @@
+.site-footer {
+  margin: $section-spacing 0;
+
+  @include media-query($small) {
+    text-align: center;
+  }
+}
+
+@include media-query($medium-up) {
+  .site-footer__linklist--center {
+    margin-top: $section-spacing-small;
+    padding-right: 0;
+  }
+}
+
+.site-footer__linklist,
+.site-footer__newsletter {
+  margin-top: $section-spacing-small;
+
+  @include media-query($medium-up) {
+    margin-top: $section-spacing;
+  }
+}
+
+.site-footer__linklist-item {
+  display: inline-block;
+  padding: 5px 10px;
+
+  @include media-query($medium-up) {
+    display: block;
+    padding: 0 20px 6px 0;
+
+    .site-footer__linklist--center & {
+      display: inline-block;
+      padding: 3px 10px;
+    }
+  }
+}
+
+.site-footer__newsletter {
+  margin: $section-spacing-small auto 0;
+  max-width: 320px;
+
+  @include media-query($medium-up) {
+    margin: $section-spacing 0 0;
+    max-width: none;
+  }
+
+  & .rte {
+    font-size: 83.95%;
+    margin-bottom: 25px;
+
+    @include media-query($large-up) {
+      font-size: 88.9%;
+    }
+
+    p {
+      font-size: inherit;
+    }
+  }
+}
+
+.site-footer__social-icons,
+.site-footer__copyright {
+  margin-top: $section-spacing-small;
+
+  @include media-query($medium-up) {
+    margin-top: $section-spacing;
+  }
+}
+
+.site-footer__copyright {
+  text-align: center;
+}
+
+.site-footer__copyright-content {
+  font-size: calc(#{$font-size-base} - 3px);
+  padding-right: 20px;
+
+  .site-footer__copyright--right & {
+    padding: 0 0 0 20px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    @include media-query($medium-up) {
+      padding: 0 0 0 30px;
+    }
+  }
+}
+
+.site-footer__copyright-content--powered-by {
+  padding-right: 0;
+}
+
+.site-footer__payment-icons {
+  margin-top: ($gutter-site-mobile);
+
+  @include media-query($medium-up) {
+    margin-top: $gutter-site-mobile;
+
+    .site-footer__copyright--right & {
+      padding-left: 30px;
+    }
+  }
+
+  .payment-icon {
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.site-footer__copyright--bottom {
+  margin-top: $section-spacing-small;
+}
+
+@include media-query($medium-up) {
+  .site-footer__payment-icons--right {
+    float: right;
+    margin-top: 0;
+  }
+}
