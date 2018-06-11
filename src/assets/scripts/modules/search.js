@@ -40,6 +40,14 @@ const Search = function() {
 
     initDrawer();
 
+    const searchQuery = getParameterByName('q');
+
+    if (searchQuery !== null) {
+      validateSearchResultForm();
+    }
+
+    $(selectors.searchResultSubmit).on('click', validateSearchResultForm);
+
     $(selectors.searchHeaderInput)
       .add(selectors.searchHeaderSubmit)
       .on('focus blur', () => {
@@ -87,6 +95,46 @@ const Search = function() {
 
   function searchDrawerFocusClose() {
     $(selectors.siteHeaderSearchToggle).focus();
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  function validateSearchResultForm(evt) {
+    const isInputValueEmpty = $(selectors.searchResultInput).val().trim().length === 0;
+
+    if (!isInputValueEmpty) {
+      hideErrorMessage();
+      return;
+    }
+
+    if (typeof evt !== 'undefined') {
+      evt.preventDefault();
+    }
+
+    searchFocus($(selectors.searchResultInput));
+    showErrorMessage();
+  }
+
+  function hideErrorMessage() {
+    $(selectors.searchResultMessage).addClass(classes.hidden);
+    $(selectors.searchResultInput)
+      .removeAttr('aria-describedby')
+      .removeAttr('aria-invalid');
+  }
+
+  function showErrorMessage() {
+    $(selectors.searchResultMessage).removeClass(classes.hidden);
+    $(selectors.searchResultInput)
+      .attr('aria-describedby', 'error-search-form')
+      .attr('aria-invalid', true);
   }
 
   return {
