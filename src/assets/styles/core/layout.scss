@@ -42,3 +42,66 @@ html {
     transform: translate3d(0, 0, 0);
   }
 }
+
+// Index sections
+.index-section {
+  padding-top: $section-spacing-small;
+  padding-bottom: $section-spacing-small;
+
+  @include media-query($medium-up) {
+    padding-top: $section-spacing;
+    padding-bottom: $section-spacing;
+  }
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.index-section--flush + .index-section--flush {
+  margin-top: -($section-spacing-small * 2);
+}
+
+[class*="index-section--flush"] + [class*="index-section--flush"] {
+  @include media-query($medium-up) {
+    margin-top: -($section-spacing * 2);
+  }
+}
+
+// Flush sections should be tight to the nav if they are the first on the page
+.index-section--flush:first-child {
+  margin-top: -$section-spacing-small;
+}
+
+[class*="index-section--flush"]:first-child {
+  @include media-query($medium-up) {
+    margin-top: -$section-spacing;
+  }
+}
+
+// Flush sections should be tight to the footer if they are last on the page
+.index-section--flush:last-child {
+  margin-bottom: -$section-spacing-small;
+}
+
+[class*="index-section--flush"]:last-child {
+  @include media-query($medium-up) {
+    margin-bottom: -$section-spacing;
+  }
+}
+
+// Visually align featured product section (if first on homepage on mobile)
+.index-section--featured-product:first-child {
+  @include media-query($small) {
+    margin-top: -12px;
+  }
+}
+
+.index-section--newsletter-background {
+  background-color: $color-bg-alt;
+}

@@ -96,3 +96,25 @@
 .border-top {
   border-top: 1px solid $color-border;
 }
+
+// Links
+.return-link-wrapper {
+  margin: ($gutter-site * 1.5) 0;
+
+  @include media-query($small) {
+    margin-bottom: (-$section-spacing) - 1; // same as .site-footer
+
+    .btn {
+      display: block;
+    }
+  }
+}
+
+.full-width-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}

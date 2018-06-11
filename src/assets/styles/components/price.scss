@@ -1,0 +1,44 @@
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+
+  @include media-query($small) {
+    font-size: calc(#{$font-size-base} - 1px);
+  }
+
+  dl {
+    margin-top: 0;
+  }
+  dd {
+    margin: 0 0.5em 0 0;
+  }
+}
+
+.price--unavailable {
+  visibility: hidden;
+}
+
+.price__regular {
+  color: $color-body-text;
+}
+
+.price__sale {
+  color: $color-sale-text;
+  display: none;
+
+  .price--on-sale & {
+    display: block;
+  }
+}
+
+.price__vendor {
+  color: $color-body-text;
+  font-size: 0.9em;
+  font-weight: $font-weight-body;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 5px 0 10px;
+  width: 100%;
+  flex-basis: 100%;
+}

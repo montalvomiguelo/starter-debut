@@ -1,0 +1,10 @@
+.product-card {
+  position: relative;
+
+  &:hover,
+  &:focus-within {
+    > * {
+      opacity: 0.6;
+    }
+  }
+}
