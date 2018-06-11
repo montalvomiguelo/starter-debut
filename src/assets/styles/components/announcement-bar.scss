@@ -1,0 +1,20 @@
+.announcement-bar {
+  text-align: center;
+  position: relative;
+  z-index: $z-index-announcement-bar;
+}
+
+.announcement-bar--link {
+  display: block;
+}
+
+.announcement-bar__message {
+  display: block;
+  font-size: 16px;
+  font-weight: $font-weight-header;
+  padding: 10px $gutter-site-mobile;
+
+  @include media-query($medium-up) {
+    padding: 10px $gutter-site;
+  }
+}
