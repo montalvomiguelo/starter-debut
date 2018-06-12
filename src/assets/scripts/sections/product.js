@@ -53,6 +53,12 @@ sections.register('product', {
       $(selectors.productJson, this.$container).html(),
     );
 
+    this.initVariants();
+    this.initImageSwitch();
+    this.setActiveThumbnail();
+  },
+
+  initVariants() {
     const options = {
       $container: this.$container,
       enableHistoryState: this.$container.data('enable-history-state') || false,
@@ -76,8 +82,22 @@ sections.register('product', {
       `variantImageChange${this.namespace}`,
       this.updateImages.bind(this),
     );
+  },
 
-    this.setActiveThumbnail();
+  initImageSwitch() {
+    if (!$(selectors.productThumbs).length) {
+      return;
+    }
+
+    $(selectors.productThumbs).on('click', (evt) => {
+      evt.preventDefault();
+      const $el = $(evt.currentTarget);
+
+      const imageId = $el.data('thumbnail-id');
+
+      this.switchImage(imageId);
+      this.setActiveThumbnail(imageId);
+    });
   },
 
   setActiveThumbnail(imageId) {
