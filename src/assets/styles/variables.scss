@@ -112,9 +112,9 @@ $font-bold-titles: var(--font-bold-titles);
 
 $font-size-base: var(--font-size-base);
 
-$font-stack-cart-notification: var(--font-stack-cart-notification);
+$font-stack-cart-notification: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$font-size-mobile-input: var(--font-size-mobile-input);
+$font-size-mobile-input: 16px;
 
 // Gift cards
 $color-giftcard-tooltip-fallback: #333;
