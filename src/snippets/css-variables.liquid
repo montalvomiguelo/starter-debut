@@ -39,29 +39,20 @@
 
     --opacity-image-overlay: {{ settings.image_overlay_opacity | divided_by: 100.00 }};
 
-    {%- assign focus_states = 'color-text-focus color-overlay-text-focus color-btn-primary-focus color-small-button-focus' | split: ' ' -%}
-    {%- assign base_settings = 'color_text color_image_overlay_text color_button color_small_button' | split: ' ' -%}
+    {% capture color_text_focus %}{%- include 'adaptive-color' with settings.color_text -%}{%- endcapture -%}
+    {% capture color_overlay_text_focus %}{%- include 'adaptive-color' with settings.color_image_overlay_text -%}{%- endcapture -%}
+    {% capture color_btn_primary_focus %}{%- include 'adaptive-color' with settings.color_button -%}{%- endcapture -%}
+    {% capture color_small_button_focus %}{%- include 'adaptive-color' with settings.color_small_button -%}{%- endcapture -%}
 
-    {%- for state in focus_states -%}
-      {%- assign setting = base_settings[forloop.index0] -%}
-      {%- assign color = settings[setting] -%}
-      {%- assign color_brightness = color | color_brightness -%}
-      {%- assign focus_color = '' -%}
-
-      {%- if color_brightness <= 25 -%}
-        {%- assign focus_color = color | color_lighten: 25 -%}
-      {%- elsif color_brightness <= 64 -%}
-        {%- assign focus_color = color | color_lighten: 15 -%}
-      {%- else -%}
-        {%- assign focus_color = color | color_darken: 10 -%}
-      {%- endif -%}
-
-      --{{ state }}: {{ focus_color }};
-    {%- endfor -%}
+    --color-text-focus: {{ color_text_focus }};
+    --color-overlay-text-focus: {{ color_overlay_text_focus }};
+    --color-btn-primary-focus: {{ color_btn_primary_focus }};
+    --color-small-button-focus: {{ color_small_button_focus }};
 
     --color-border-form-focus: {{ settings.color_text | color_darken: 10 | color_to_rgb | color_modify: 'alpha', 0.85 }};
 
-    --icon-svg-select: url({{ 'icon-select.svg' | asset_url }});
+    {% capture icon_svg_select %}url({{ 'icon-select.svg' | asset_url }}){%- endcapture -%}
+    --icon-svg-select: {{ icon_svg_select }};
 
     --font-weight-body--bold: {{ base_font_bold.weight | default: 700 }};
     --font-weight-header--bold: {{ header_font_bold.weight | default: 700 }};
@@ -78,9 +69,5 @@
     --font-bold-titles: {{ font_bold_titles }};
 
     --font-size-base: {{ settings.type_base_size }}px;
-
-    --font-stack-cart-notification: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    --font-size-mobile-input: 16px;
   }
 </style>
