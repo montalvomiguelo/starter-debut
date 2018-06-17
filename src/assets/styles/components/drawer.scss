@@ -1,14 +1,13 @@
 .drawer {
-  // sass-lint:disable no-misspelled-properties
-  display: none;
   position: absolute;
+  z-index: $z-index-drawer;
+  display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  z-index: $z-index-drawer;
   background-color: $color-bg;
   transition: $transition-drawer;
 
-  input[type="text"],
+  input[type='text'],
   textarea {
     background-color: $color-bg;
     color: $color-text;
@@ -29,17 +28,17 @@
 }
 
 .drawer-page-content::after {
-  visibility: hidden;
-  opacity: 0;
   content: '';
-  display: block;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: $z-index-drawer - 1;
+  visibility: hidden;
+  opacity: 0;
+  display: block;
   width: 100%;
   height: 100%;
   background-color: $color-drawer-background;
-  z-index: $z-index-drawer - 1;
   transition: $transition-drawer;
 
   .js-drawer-open & {
@@ -55,10 +54,10 @@
 }
 
 .drawer__close-button {
-  background: none;
-  border: 0 none;
   position: relative;
   right: -15px;
+  background: none;
+  border: 0 none;
   height: 100%;
   width: 60px;
   padding: 0 20px;

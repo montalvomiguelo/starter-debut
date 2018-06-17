@@ -30,7 +30,7 @@ button {
 }
 
 input {
-  &[type="submit"] {
+  &[type='submit'] {
     cursor: pointer;
   }
 }
@@ -43,8 +43,8 @@ label {
     font-size: calc(#{$font-size-base} - 2px);
   }
 
-  [type="radio"] + &,
-  [type="checkbox"] + & {
+  [type='radio'] + &,
+  [type='checkbox'] + & {
     display: inline-block;
     margin-bottom: 0;
   }
@@ -75,38 +75,18 @@ select {
   }
 
   &.input--error {
-    &::-webkit-input-placeholder {
-      @include error-placeholder-text();
-    }
+    border-color: $color-error;
+    background-color: $color-error-bg;
+    color: $color-error;
 
-    &::-moz-placeholder {
-      @include error-placeholder-text();
-    }
-
-    &:-ms-input-placeholder {
-      @include error-placeholder-text();
-    }
-
-    &::-ms-input-placeholder {
-      @include error-placeholder-text($opacity: 1);
+    &::placeholder {
+      @include error-placeholder-text;
     }
   }
 
   &.hidden-placeholder {
-    &::-webkit-input-placeholder {
+    &::placeholder {
       color: transparent;
-    }
-
-    &::-moz-placeholder {
-      color: transparent;
-    }
-
-    &:-ms-input-placeholder {
-      color: transparent;
-    }
-
-    &::-ms-input-placeholder {
-      opacity: 1;
     }
   }
 
@@ -119,25 +99,9 @@ textarea {
   min-height: 100px;
 }
 
-/*================ Error styles ================*/
-input,
-select,
-textarea {
-  &.input--error {
-    border-color: $color-error;
-    background-color: $color-error-bg;
-    color: $color-error;
-  }
-}
-
 select {
   appearance: none;
-  background-position: right center;
-  background: {
-    image: $svg-select-icon;
-    repeat: no-repeat;
-    position: right 10px center;
-  }
+  background: $svg-select-icon no-repeat right 10px center;
   line-height: 1.2;
   padding-right: 28px;
   text-indent: 0.01px;
@@ -153,7 +117,7 @@ select {
     padding-bottom: $input-padding-top-bottom;
   }
 
-  /*================ Hide the svg arrow in IE9 and below ================*/
+  /* ================ Hide the svg arrow in IE9 and below ================ */
   .ie9 & {
     padding-right: 10px;
     background-image: none;
@@ -174,7 +138,7 @@ select::-ms-expand {
   display: none;
 }
 
-/*================ Form labels ================*/
+/* ================ Form labels ================ */
 .label--hidden {
   position: absolute;
   height: 0;
@@ -194,23 +158,11 @@ select::-ms-expand {
   }
 }
 
-::-webkit-input-placeholder {
-  @include placeholder-text();
+::placeholder {
+  @include placeholder-text;
 }
 
-::-moz-placeholder {
-  @include placeholder-text();
-}
-
-:-ms-input-placeholder {
-  @include placeholder-text();
-}
-
-::-ms-input-placeholder {
-  @include placeholder-text($opacity: 1);
-}
-
-/*================ Labels ================*/
+/* ================ Labels ================ */
 .label--error {
   color: $color-error;
 }
@@ -224,7 +176,7 @@ textarea {
   }
 }
 
-/*================ Vertical forms ================*/
+/* ================ Vertical forms ================ */
 .form-vertical {
   input,
   select,
@@ -234,21 +186,21 @@ textarea {
     margin-bottom: ($section-spacing-small / 1.8); // same as <p>
   }
 
-  [type="radio"],
-  [type="checkbox"] {
+  [type='radio'],
+  [type='checkbox'] {
     display: inline-block;
     width: auto;
     margin-right: 5px;
   }
 
-  [type="submit"],
+  [type='submit'],
   .btn {
     display: inline-block;
     width: auto;
   }
 }
 
-/*================ Form feedback messages ================*/
+/* ================ Form feedback messages ================ */
 .note,
 .form-message {
   padding: $input-padding-top-bottom-small;
@@ -287,7 +239,7 @@ textarea {
   }
 }
 
-/*================ Input Groups ================*/
+/* ================ Input Groups ================ */
 
 .input-group {
   position: relative;

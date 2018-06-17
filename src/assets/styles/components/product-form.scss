@@ -17,8 +17,9 @@
   label {
     display: block;
 
+    // stylelint-disable-next-line
     .product-form--hide-variant-labels & {
-      // sass-lint:disable no-important
+      // stylelint-disable-next-line
       position: absolute !important;
       overflow: hidden;
       clip: rect(0 0 0 0);
@@ -80,7 +81,7 @@
   padding-left: 5px;
   padding-right: 5px;
   white-space: normal;
-  margin-top: 0px;
+  margin-top: 0;
   min-height: 44px;
 
   .product-single--small-image &,

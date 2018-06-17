@@ -16,6 +16,7 @@
 }
 
 .visually-hidden--static {
+  // stylelint-disable-next-line
   position: static !important;
 }
 
@@ -40,6 +41,7 @@
 }
 
 .hide {
+  // stylelint-disable-next-line
   display: none !important;
 }
 

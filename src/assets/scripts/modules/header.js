@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const Header = function() {
+const Header = (function() {
 
   const selectors = {
     body: 'body',
@@ -9,12 +9,12 @@ const Header = function() {
     siteNavChildLinks: '.site-nav__child-link',
     siteNavActiveDropdown: '.site-nav--active-dropdown',
     siteNavLinkMain: '.site-nav__link--main',
-    siteNavChildLink: '.site-nav__link--last'
+    siteNavChildLink: '.site-nav__link--last',
   };
 
   const config = {
     activeClass: 'site-nav--active-dropdown',
-    childLinkClass: 'site-nav__child-link'
+    childLinkClass: 'site-nav__child-link',
   };
 
   let cache = {};
@@ -25,12 +25,15 @@ const Header = function() {
     cache.$parents.on('click.siteNav', (evt) => {
       const $el = $(evt.currentTarget);
 
-      $el.hasClass(config.activeClass) ? hideDropdown($el) : showDropdown($el);
+      if ($el.hasClass(config.activeClass)) {
+        return hideDropdown($el);
+      }
+      return showDropdown($el);
     });
 
     // check when we're leaving a dropdown and close the active dropdown
     $(selectors.siteNavChildLink).on('focusout.siteNav', () => {
-      setTimeout(() => {
+      window.setTimeout(() => {
         if (
           $(document.activeElement).hasClass(config.childLinkClass) ||
           !cache.$activeDropdown.length
@@ -39,7 +42,7 @@ const Header = function() {
         }
 
         hideDropdown(cache.$activeDropdown);
-      })
+      });
     });
 
     // close dropdowns when on top level nav
@@ -61,7 +64,7 @@ const Header = function() {
       $topLevel: $(selectors.siteNavLinkMain),
       $parents: $(selectors.navigation).find(selectors.siteNavHasDropdown),
       $subMenuLinks: $(selectors.siteNavChildLinks),
-      $activeDropdown: $(selectors.siteNavActiveDropdown)
+      $activeDropdown: $(selectors.siteNavActiveDropdown),
     };
   }
 
@@ -78,14 +81,14 @@ const Header = function() {
     // set expanded on open dropdown
     $el.find(selectors.siteNavLinkMain).attr('aria-expanded', 'true');
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       $(window).on('keyup.siteNav', (evt) => {
         if (evt.keyCode === 27) {
           hideDropdown($el);
         }
       });
 
-      $(selectors.body).on('click.siteNav', function() {
+      $(selectors.body).on('click.siteNav', () => {
         hideDropdown($el);
       });
     }, 250);
@@ -113,9 +116,9 @@ const Header = function() {
   }
 
   return {
-    init: init,
-    unload: unload
-  }
-}();
+    init,
+    unload,
+  };
+})();
 
 export default Header;

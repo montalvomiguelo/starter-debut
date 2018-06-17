@@ -19,8 +19,8 @@
 }
 
 .feature-row__image-wrapper {
-  margin: 0 auto $section-spacing-small / 1.8;
   position: relative;
+  margin: 0 auto $section-spacing-small / 1.8;
   width: 100%;
 }
 
@@ -29,9 +29,9 @@
   margin: 0 auto;
 
   .feature-row__image-wrapper & {
-    width: 100%;
     position: absolute;
     top: 0;
+    width: 100%;
   }
 
   @include media-query($small) {

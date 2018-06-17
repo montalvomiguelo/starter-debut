@@ -8,5 +8,5 @@ sections.register('header', {
     Header.init();
     MobileNav.init();
     Search.init();
-  }
+  },
 });

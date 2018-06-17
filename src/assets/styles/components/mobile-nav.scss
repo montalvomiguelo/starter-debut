@@ -83,11 +83,11 @@
 
 .mobile-nav__dropdown {
   position: absolute;
+  top: 0;
+  right: -100%;
   background-color: $color-body;
   z-index: $z-index-sub-nav;
   width: 100%;
-  top: 0;
-  right: -100%;
   display: none;
 
   .is-active + & {

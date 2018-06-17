@@ -22,6 +22,7 @@ blockquote {
     margin-bottom: $gutter-site / 2;
   }
 
+  // stylelint-disable-next-line
   p + cite {
     margin-top: $gutter-site / 2;
   }
@@ -59,7 +60,7 @@ select {
   color: $color-text;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 // Prevent zoom on touch devices in active inputs
@@ -72,7 +73,7 @@ select {
   }
 }
 
-/*================ Headings ================*/
+/* ================ Headings ================ */
 
 h1,
 h2,
@@ -150,26 +151,32 @@ h6 {
 }
 
 .h1 {
+  // stylelint-disable-next-line
   @extend h1;
 }
 
 .h2 {
+  // stylelint-disable-next-line
   @extend h2;
 }
 
 .h3 {
+  // stylelint-disable-next-line
   @extend h3;
 }
 
 .h4 {
+  // stylelint-disable-next-line
   @extend h4;
 }
 
 .h5 {
+  // stylelint-disable-next-line
   @extend h5;
 }
 
 .h6 {
+  // stylelint-disable-next-line
   @extend h6;
 }
 
@@ -187,7 +194,7 @@ a {
   }
 }
 
-a[href^="tel"] {
+a[href^='tel'] {
   color: inherit;
 }
 
@@ -222,6 +229,7 @@ li {
   padding: 0;
   margin: 0;
 
+  // stylelint-disable-next-line
   & > li {
     display: inline-block;
     margin-bottom: 0;

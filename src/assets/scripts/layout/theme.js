@@ -14,7 +14,7 @@ import {cookiesEnabled} from '@shopify/theme-cart';
 import {wrapTable, wrapIframe} from '@shopify/theme-rte';
 
 import sections from '@shopify/theme-sections';
-import '../sections/header.js';
+import '../sections/header';
 
 window.slate = window.slate || {};
 window.theme = window.theme || {};

@@ -13,8 +13,8 @@
   color: $color-overlay-title-text;
   position: absolute;
   text-align: center;
-  width: 100%;
   top: 50%;
+  width: 100%;
   padding: 0 5px;
   transform: translateY(-50%);
   transition: $transition-link-hover;
@@ -30,12 +30,12 @@
 }
 
 .collection-grid-item__link {
-  border: 2px solid transparent;
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
 
   &:focus {
     border-color: $color-image-overlay;

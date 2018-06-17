@@ -1,11 +1,11 @@
-/*============================================================================
+/* ============================================================================
   Grid Setup
     1. Allow the grid system to be used on lists.
     2. Remove any margins and paddings that might affect the grid system.
     3. Apply a negative `margin-left` to negate the columns' gutters.
-==============================================================================*/
+============================================================================== */
 .grid {
-  @include clearfix();
+  @include clearfix;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -25,15 +25,15 @@
     padding-left: $grid-gutter-mobile;
   }
 
-  &[class*="--push"] {
+  &[class*='--push'] {
     position: relative;
   }
 }
 
-/*============================================================================
+/* ============================================================================
   Reversed grids allow you to structure your source in the opposite
   order to how your rendered layout will appear.
-==============================================================================*/
+============================================================================== */
 .grid--rev {
   direction: rtl;
   text-align: left;
@@ -45,12 +45,12 @@
   }
 }
 
-/*================ Build Base Grid Classes ================*/
-@include grid-column-generator();
-@include responsive-display-helper();
-@include responsive-text-align-helper();
+/* ================ Build Base Grid Classes ================ */
+@include grid-column-generator;
+@include responsive-display-helper;
+@include responsive-text-align-helper;
 
-/*================ Build Responsive Grid Classes ================*/
+/* ================ Build Responsive Grid Classes ================ */
 @each $breakpoint in $grid-breakpoint-has-widths {
   @include media-query($breakpoint) {
     @include grid-column-generator('#{$breakpoint}--');
@@ -60,7 +60,7 @@
   }
 }
 
-/*================ Build Grid Push Classes ================*/
+/* ================ Build Grid Push Classes ================ */
 @each $breakpoint in $grid-breakpoint-has-push {
   @include media-query($breakpoint) {
     @include grid-push-generator('#{$breakpoint}--');

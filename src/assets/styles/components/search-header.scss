@@ -1,14 +1,14 @@
-/*============================================================================
+/* ============================================================================
   The search submit button has pointer-events: none which also
   effects the :hover style. This forces the style to be applied.
-==============================================================================*/
+============================================================================== */
 .search-header__input:hover + .btn--link {
   color: $color-text-focus;
 }
 
 .search-header {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 100%;
   max-width: calc(30em / 16);
   vertical-align: middle;

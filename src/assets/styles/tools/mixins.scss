@@ -118,10 +118,10 @@
   opacity: $opacity;
 }
 
-/*============================================================================
+/* ============================================================================
   Grid Columns
     - Create width classes, prepended by the breakpoint name.
-==============================================================================*/
+============================================================================== */
 // sass-lint:disable brace-style empty-line-between-blocks
 @mixin grid-column-generator($grid-breakpoint-type: '') {
   /* Whole */
@@ -186,7 +186,7 @@
   .#{$grid-breakpoint-type}eleven-twelfths { width: percentage(11 / 12); }
 }
 
-/*================ Grid push classes ================*/
+/* ================ Grid push classes ================ */
 @mixin grid-push-generator($grid-breakpoint-type: '') {
   /* Halves */
   .#{$grid-breakpoint-type}push-one-half { left: percentage(1 / 2); }
@@ -247,7 +247,7 @@
   .#{$grid-breakpoint-type}push-eleven-twelfths { left: percentage(11 / 12); }
 }
 
-/*================ Clearfix helper on uniform grids ================*/
+/* ================ Clearfix helper on uniform grids ================ */
 @mixin grid-uniform-clearfix($grid-breakpoint-type: '') {
   .grid--uniform {
     .#{$grid-breakpoint-type}one-half:nth-child(2n+1),
@@ -269,30 +269,34 @@
   }
 }
 
-/*================ Responsive Show/Hide Helper ================*/
+/* ================ Responsive Show/Hide Helper ================ */
 @mixin responsive-display-helper($grid-breakpoint-type: '') {
-  // sass-lint:disable no-important
   .#{$grid-breakpoint-type}show {
+    // stylelint-disable-next-line
     display: block !important;
   }
 
   .#{$grid-breakpoint-type}hide {
+  // stylelint-disable-next-line
     display: none !important;
   }
 }
 
-/*================ Responsive Text Alignment Helper ================*/
+/* ================ Responsive Text Alignment Helper ================ */
 @mixin responsive-text-align-helper($grid-breakpoint-type: '') {
   // sass-lint:disable no-important
   .#{$grid-breakpoint-type}text-left {
+    // stylelint-disable-next-line
     text-align: left !important;
   }
 
   .#{$grid-breakpoint-type}text-right {
+    // stylelint-disable-next-line
     text-align: right !important;
   }
 
   .#{$grid-breakpoint-type}text-center {
+    // stylelint-disable-next-line
     text-align: center !important;
   }
 }

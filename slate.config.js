@@ -18,14 +18,22 @@ module.exports = {
         module: {
           rules: [
             {
-              test: require.resolve('prepare-transition/preparetransition.js'),
+              test: require.resolve('prepare-transition/preparetransition'),
               use: 'imports-loader?$=jquery,jQuery=jquery',
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       prod: {
-        resolve: {alias}
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('prepare-transition/preparetransition'),
+              use: 'imports-loader?$=jquery,jQuery=jquery',
+            },
+          ],
+        },
       },
     },
   },

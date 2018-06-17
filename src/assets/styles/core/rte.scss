@@ -28,9 +28,11 @@
   ul {
     list-style: disc outside;
 
+    // stylelint-disable-next-line
     ul {
       list-style: circle outside;
 
+      // stylelint-disable-next-line
       ul {
         list-style: square outside;
       }
@@ -68,6 +70,7 @@
 
 .text-center.rte,
 .text-center .rte {
+  // stylelint-disable-next-line
   ul,
   ol {
     margin-left: 0;

@@ -1,9 +1,9 @@
 .product-featured-img {
-  display: block;
-  margin: 0 auto;
   position: absolute;
   top: 4px;
   left: 4px;
+  display: block;
+  margin: 0 auto;
   width: calc(100% - 8px);
 
   .no-js & {

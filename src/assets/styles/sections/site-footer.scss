@@ -46,17 +46,17 @@
     max-width: none;
   }
 
-  & .rte {
+  .rte {
     font-size: 83.95%;
     margin-bottom: 25px;
 
     @include media-query($large-up) {
       font-size: 88.9%;
     }
+  }
 
-    p {
-      font-size: inherit;
-    }
+  p {
+    font-size: inherit;
   }
 }
 

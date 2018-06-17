@@ -10,7 +10,7 @@ html {
 }
 
 .page-width {
-  @include clearfix();
+  @include clearfix;
   max-width: $width-site;
   margin: 0 auto;
   padding-left: $gutter-site;
@@ -67,7 +67,7 @@ html {
   margin-top: -($section-spacing-small * 2);
 }
 
-[class*="index-section--flush"] + [class*="index-section--flush"] {
+[class*='index-section--flush'] + [class*='index-section--flush'] {
   @include media-query($medium-up) {
     margin-top: -($section-spacing * 2);
   }
@@ -78,7 +78,7 @@ html {
   margin-top: -$section-spacing-small;
 }
 
-[class*="index-section--flush"]:first-child {
+[class*='index-section--flush']:first-child {
   @include media-query($medium-up) {
     margin-top: -$section-spacing;
   }
@@ -89,7 +89,7 @@ html {
   margin-bottom: -$section-spacing-small;
 }
 
-[class*="index-section--flush"]:last-child {
+[class*='index-section--flush']:last-child {
   @include media-query($medium-up) {
     margin-bottom: -$section-spacing;
   }

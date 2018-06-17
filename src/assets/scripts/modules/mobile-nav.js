@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import enquire from 'enquire.js';
 import {trapFocus, removeTrapFocus} from '@shopify/theme-a11y';
-import 'prepare-transition/preparetransition.js';
+import 'prepare-transition/preparetransition';
 
-const MobileNav = function() {
+const MobileNav = (function() {
 
   const classes = {
     mobileNavOpenIcon: 'mobile-nav--open',
@@ -17,7 +17,7 @@ const MobileNav = function() {
     navOpen: 'js-menu--is-open',
     subNavShowing: 'sub-nav--is-open',
     thirdNavShowing: 'third-nav--is-open',
-    subNavToggleBtn: 'js-toggle-submenu'
+    subNavToggleBtn: 'js-toggle-submenu',
   };
   let cache = {};
   let isTransitioning;
@@ -35,9 +35,9 @@ const MobileNav = function() {
 
     // Close mobile nav when unmatching mobile breakpoint
     enquire.register(mediaQuerySmall, {
-      unmatch: function() {
+      unmatch() {
         closeMobileNav();
-      }
+      },
     });
   }
 
@@ -57,7 +57,7 @@ const MobileNav = function() {
       $mobileNavContainer: $('.mobile-nav-wrapper'),
       $mobileNav: $('#MobileNav'),
       $sectionHeader: $('#shopify-section-header'),
-      $subNavToggleBtn: $(`.${classes.subNavToggleBtn}`)
+      $subNavToggleBtn: $(`.${classes.subNavToggleBtn}`),
     };
   }
 
@@ -67,11 +67,11 @@ const MobileNav = function() {
     cache.$mobileNavContainer.prepareTransition().addClass(classes.navOpen);
 
     cache.$mobileNavContainer.css({
-      transform: `translateY(${translateHeaderHeight}px)`
+      transform: `translateY(${translateHeaderHeight}px)`,
     });
 
     cache.$pageContainer.css({
-      transform: `translate3d(0, ${cache.$mobileNavContainer[0].scrollHeight}px, 0)`
+      transform: `translate3d(0, ${cache.$mobileNavContainer[0].scrollHeight}px, 0)`,
     });
 
     $(document).off('focusin');
@@ -79,7 +79,7 @@ const MobileNav = function() {
     trapFocus({
       $container: cache.$sectionHeader,
       $elementToFocus: cache.$mobileNavToggle,
-      namespace: 'navFocus'
+      namespace: 'navFocus',
     });
 
     cache.$mobileNavToggle
@@ -89,7 +89,7 @@ const MobileNav = function() {
 
     // close on escape
     $(window).on('keyup.mobileNav', (evt) => {
-      if(evt.which === 27) {
+      if (evt.which === 27) {
         closeMobileNav();
       }
     });
@@ -99,14 +99,14 @@ const MobileNav = function() {
     cache.$mobileNavContainer.prepareTransition().removeClass(classes.navOpen);
 
     cache.$mobileNavContainer.css({
-      transform: 'translateY(-100%)'
+      transform: 'translateY(-100%)',
     });
 
     cache.$pageContainer.removeAttr('style');
 
     trapFocus({
       $container: $('html'),
-      $elementToFocus: $('body')
+      $elementToFocus: $('body'),
     });
 
     cache.$mobileNavContainer.one(
@@ -114,9 +114,9 @@ const MobileNav = function() {
       () => {
         removeTrapFocus({
           $container: cache.$mobileNav,
-          namespace: 'navFocus'
+          namespace: 'navFocus',
         });
-      }
+      },
     );
 
     cache.$mobileNavToggle
@@ -127,7 +127,7 @@ const MobileNav = function() {
 
     $(window).off('keyup.mobileNav');
 
-    scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }
 
   function toggleSubNav(evt) {
@@ -188,7 +188,7 @@ const MobileNav = function() {
     /* if going back to first subnav, focus is on whole header */
     const $container = menuLevel === 1 ? cache.$sectionHeader : $targetMenu;
 
-    const $menuTitle = $targetMenu.find(`[data-menu-title="${menuLevel}"]`)
+    const $menuTitle = $targetMenu.find(`[data-menu-title="${menuLevel}"]`);
     const $elementToFocus = $menuTitle ? $menuTitle : $targetMenu;
 
     // Focusing an item in the subnav early forces element into view and breaks the animation.
@@ -196,29 +196,29 @@ const MobileNav = function() {
       'TransitionEnd.subnavToggle webkitTransitionEnd.subnavToggle transitionend.subnavToggle oTransitionEnd.subnavToggle',
       () => {
         trapFocus({
-          $container: $container,
-          $elementToFocus: $elementToFocus,
-          namespace: 'subNavFocus'
+          $container,
+          $elementToFocus,
+          namespace: 'subNavFocus',
         });
 
         cache.$mobileNavContainer.off('.subnavToggle');
         isTransitioning = false;
-      }
+      },
     );
 
     // Match height of subnav
     cache.$pageContainer.css({
-      transform: `translateY(${translateMenuHeight}px)`
+      transform: `translateY(${translateMenuHeight}px)`,
     });
 
     $activeSubNav.removeClass(classes.subNavClosing);
   }
 
   return {
-    init: init,
-    closeMobileNav: closeMobileNav
+    init,
+    closeMobileNav,
   };
 
-}();
+})();
 
 export default MobileNav;

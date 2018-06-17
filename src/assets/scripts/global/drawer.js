@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'prepare-transition/preparetransition.js';
+import 'prepare-transition/preparetransition';
 import {trapFocus, removeTrapFocus} from '@shopify/theme-a11y';
 
 class Drawer {
@@ -8,12 +8,12 @@ class Drawer {
       close: '.js-drawer-close',
       open: `.js-drawer-open-${position}`,
       openClass: 'js-drawer-open',
-      dirOpenClass: `js-drawer-open-${position}`
+      dirOpenClass: `js-drawer-open-${position}`,
     };
 
     this.nodes = {
       $parent: $('html').add('body'),
-      $page: $('#PageContainer')
+      $page: $('#PageContainer'),
     };
 
     this.config = $.extend(defaults, options);
@@ -61,9 +61,7 @@ class Drawer {
     // transition for close animation
     this.$drawer.prepareTransition();
 
-    this.nodes.$parent.addClass(
-      `${this.config.openClass} ${this.config.dirOpenClass}`
-    );
+    this.nodes.$parent.addClass(`${this.config.openClass} ${this.config.dirOpenClass}`);
     this.drawerIsOpen = true;
 
     $(document).off('focusin');
@@ -71,7 +69,7 @@ class Drawer {
     // Set focus on drawer
     trapFocus({
       $container: this.$drawer,
-      namespace: 'drawer_focus'
+      namespace: 'drawer_focus',
     });
 
     // Run function when draw opens if set
@@ -105,9 +103,7 @@ class Drawer {
     // Ensure closing transition is applied to moved elements, like the nav
     this.$drawer.prepareTransition();
 
-    this.nodes.$parent.removeClass(
-      `${this.config.dirOpenClass} ${this.config.openClass}`
-    );
+    this.nodes.$parent.removeClass(`${this.config.dirOpenClass} ${this.config.openClass}`);
 
     if (this.$activeSource && this.$activeSource.attr('aria-expanded')) {
       this.$activeSource.attr('aria-expanded', 'false');
@@ -118,7 +114,8 @@ class Drawer {
     // Remove focus on drawer
     removeTrapFocus({
       $container: this.$drawer,
-      namespace: 'drawer_focus'
+      namespace: 'drawer_focus',
+
     });
 
     this.unbindEvents();
@@ -142,8 +139,8 @@ class Drawer {
           return false;
         }
         return true;
-      }
-    )
+      },
+    );
 
     // Lock scrolling on mobile
     this.nodes.$page.on('touchmove.drawer', () => false);

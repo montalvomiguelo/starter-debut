@@ -1,5 +1,6 @@
 .is-transitioning {
-  // sass-lint:disable no-important
+  // stylelint-disable-next-line
   display: block !important;
+  // stylelint-disable-next-line
   visibility: visible !important;
 }

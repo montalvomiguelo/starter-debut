@@ -1,9 +1,3 @@
-.site-header__logo {
-  img {
-    display: block;
-  }
-}
-
 .site-header {
   background-color: $color-body;
   position: relative;
@@ -23,6 +17,10 @@
 
 .site-header__logo {
   margin: 15px 0;
+
+  img {
+    display: block;
+  }
 
   .logo-align--center & {
     text-align: center;
@@ -116,7 +114,7 @@
   display: inline-block;
   vertical-align: middle;
 
-  @include visually-hidden();
+  @include visually-hidden;
 }
 
 .site-header__cart-title {
@@ -124,13 +122,13 @@
 }
 
 .site-header__cart-count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   right: 0.4rem;
   top: 0.2rem;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-body--bold;
   background-color: $color-btn-primary;
   color: $color-btn-primary-text;
   border-radius: 50%;
@@ -178,6 +176,11 @@
 @include media-query($small) {
   .site-header__logo {
     padding-left: $gutter-site-mobile;
+    text-align: left;
+
+    img {
+      margin: 0;
+    }
   }
 
   .site-header__icons {
@@ -189,14 +192,6 @@
     vertical-align: middle;
     padding: calc(12em / 16);
     margin: 0;
-  }
-
-  .site-header__logo {
-    text-align: left;
-
-    img {
-      margin: 0;
-    }
   }
 }
 

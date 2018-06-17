@@ -25,14 +25,14 @@ const selectors = {
   productThumbs: '[data-product-single-thumbnail]',
   singleOptionSelector: '[data-single-option-selector]',
   regularPrice: '[data-regular-price]',
-  salePrice: '[data-sale-price]'
+  salePrice: '[data-sale-price]',
 };
 
 const cssClasses = {
-  activeThumbnail: 'active-thumbnail',
+  activeThumbnail: 'active-thumb',
   hide: 'hide',
   productOnSale: 'price--on-sale',
-  productUnavailable: 'price--unavailable'
+  productUnavailable: 'price--unavailable',
 };
 
 /**
@@ -101,17 +101,17 @@ sections.register('product', {
   },
 
   setActiveThumbnail(imageId) {
-    const activeClass = 'active-thumb';
+    let id = imageId;
 
     // If there is no element passed, find it by the current product image
-    if (typeof imageId === 'undefined') {
-      imageId = $(
+    if (typeof id === 'undefined') {
+      id = $(
         `${selectors.productImageWrapper}:not(".${cssClasses.hide}")`,
       ).data('image-id');
     }
 
     const $thumbnail = $(
-      `${selectors.productThumbs}[data-thumbnail-id="${imageId}"]`,
+      `${selectors.productThumbs}[data-thumbnail-id="${id}"]`,
     );
 
     $(selectors.productThumbs)
@@ -198,17 +198,17 @@ sections.register('product', {
       $regularPrice.html(
         formatMoney(
           variant.compare_at_price,
-          theme.moneyFormat
-        )
+          theme.moneyFormat,
+        ),
       );
       $salePrice.html(
-        formatMoney(variant.price, theme.moneyFormat)
+        formatMoney(variant.price, theme.moneyFormat),
       );
       $priceContainer.addClass(cssClasses.productOnSale);
     } else {
       // Regular price
       $regularPrice.html(
-        formatMoney(variant.price, theme.moneyFormat)
+        formatMoney(variant.price, theme.moneyFormat),
       );
     }
   },

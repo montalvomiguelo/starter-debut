@@ -53,7 +53,7 @@ $color-success: #19a340;
 $color-success-bg: #f8fff9;
 
 // Forms
-$color-form-text: #333;
+$color-form-text: #333333;
 $color-error-input-text: $color-error;
 $input-padding-top-bottom: 10px;
 $input-padding-left-right: 18px;
@@ -76,7 +76,7 @@ $section-spacing-small: 35px;
 $border-radius: 2px;
 
 // Z-index
-$z-index-dropdown : 7;
+$z-index-dropdown: 7;
 $z-index-sub-nav: 8;
 $z-index-drawer: 9;
 $z-index-announcement-bar: 10;
@@ -89,8 +89,8 @@ $svg-select-icon: var(--icon-svg-select);
 $transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
 
 // Hero slider
-$color-slideshow-arrows: #000;
-$color-slideshow-dots: #fff;
+$color-slideshow-arrows: #000000;
+$color-slideshow-dots: #ffffff;
 
 $transition-text-slideshow: all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 $transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
@@ -112,19 +112,19 @@ $font-bold-titles: var(--font-bold-titles);
 
 $font-size-base: var(--font-size-base);
 
-$font-stack-cart-notification: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-stack-cart-notification: 'HelveticaNeue', 'Helvetica Neue', helvetica, arial, sans-serif;
 
 $font-size-mobile-input: 16px;
 
 // Gift cards
-$color-giftcard-tooltip-fallback: #333;
-$color-giftcard-light: #fff;
+$color-giftcard-tooltip-fallback: #333333;
+$color-giftcard-light: #ffffff;
 $color-giftcard-tooltip: rgba(0, 0, 0, 0.9);
-$color-giftcard-disabled: #999;
+$color-giftcard-disabled: #999999;
 $color-giftcard-small-text: #b3b3b3;
 $color-giftcard-shadow: rgba(0, 0, 0, 0.1);
-$color-giftcard-print-bg: #fff;
-$color-giftcard-print: #000;
+$color-giftcard-print-bg: #ffffff;
+$color-giftcard-print: #000000;
 $color-giftcard-bg: #e95e61;
 
 $z-index-giftcard-image: 2;
@@ -160,11 +160,11 @@ $grid-breakpoints: (
   $widescreen '(min-width: #{$grid-widescreen})'
 );
 
-/*============================================================================
+/* ============================================================================
   Generate breakpoint-specific column widths and push classes
     - Default column widths: $grid-breakpoint-has-widths: ($small, $medium-up);
     - Default is no push classes
-==============================================================================*/
+============================================================================== */
 $grid-breakpoint-has-widths: ($small, $medium-up);
 $grid-breakpoint-has-push: ($small, $medium-up);
 

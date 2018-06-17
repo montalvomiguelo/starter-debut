@@ -30,10 +30,11 @@ symbol {
 // A generic way to visually hide content while
 // remaining accessible to screen readers (h5bp.com)
 .icon__fallback-text {
+  // stylelint-disable-next-line
   @extend .visually-hidden;
 
   .no-svg & {
-    // sass-lint:disable no-important
+    // stylelint-disable-next-line
     position: static !important;
     overflow: inherit;
     clip: none;
@@ -82,6 +83,7 @@ symbol {
     height: 25px;
   }
 
+  // stylelint-disable-next-line
   &.icon--wide {
     width: 40px;
   }

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Drawer from '../global/drawer';
 import MobileNav from '../modules/mobile-nav';
 
-const Search = function() {
+const Search = (function() {
 
   const selectors = {
     search: '.search',
@@ -24,13 +24,13 @@ const Search = function() {
     searchResultInput: '#SearchInput',
     searchResultMessage: '[data-search-error-message]',
 
-    mobileNavWrapper: '.mobile-nav-wrapper'
+    mobileNavWrapper: '.mobile-nav-wrapper',
   };
 
   const classes = {
     focus: 'search--focus',
     hidden: 'hide',
-    mobileNavIsOpen: 'js-menu--is-open'
+    mobileNavIsOpen: 'js-menu--is-open',
   };
 
   function init() {
@@ -60,7 +60,7 @@ const Search = function() {
 
       $(selectors.searchDrawer).css({
         height: `${searchHeight}px`,
-        top: `${searchOffset}px`
+        top: `${searchOffset}px`,
       });
     });
   }
@@ -75,7 +75,7 @@ const Search = function() {
 
     theme.SearchDrawer = new Drawer('SearchDrawer', 'top', {
       onDrawerOpen: searchDrawerFocus,
-      onDrawerClose: searchDrawerFocusClose
+      onDrawerClose: searchDrawerFocusClose,
     });
   }
 
@@ -98,17 +98,18 @@ const Search = function() {
   }
 
   function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    let uri = url;
+    if (!uri) { uri = window.location.href; }
+    const query = name.replace(/[[\]]/g, '\\$&');
+    const regex = new RegExp(`[?&]${query}(=([^&#]*)|&|#|$)`);
+    const results = regex.exec(uri);
+    if (!results) { return null; }
+    if (!results[2]) { return ''; }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
   function validateSearchResultForm(evt) {
-    const isInputValueEmpty = $(selectors.searchResultInput).val().trim().length === 0;
+    const isInputValueEmpty = ($(selectors.searchResultInput).val().trim().length === 0);
 
     if (!isInputValueEmpty) {
       hideErrorMessage();
@@ -138,9 +139,9 @@ const Search = function() {
   }
 
   return {
-    init: init
+    init,
   };
 
-}();
+})();
 
 export default Search;

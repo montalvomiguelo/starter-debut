@@ -1,7 +1,7 @@
 .search-bar__form {
+  position: relative;
   display: table;
   width: 100%;
-  position: relative;
   height: calc(46em / 16);
   border: 1px solid transparent;
 }
@@ -21,14 +21,14 @@
 
 .search-bar__submit,
 .search-header__submit {
-  display: inline-block;
-  vertical-align: middle;
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
   padding: 0 12px;
   height: 100%;
-  z-index: 1;
 }
 
 .search-header__input,
@@ -41,20 +41,8 @@
   width: 100%;
   min-height: 44px;
 
-  &::-webkit-input-placeholder {
+  &::placeholder {
     @include placeholder-text($color-text);
-  }
-
-  &::-moz-placeholder {
-    @include placeholder-text($color-text);
-  }
-
-  &:-ms-input-placeholder {
-    @include placeholder-text($color-text, 0);
-  }
-
-  &::-ms-input-placeholder {
-    @include placeholder-text($color-text, 1);
   }
 }
 
@@ -79,9 +67,9 @@
 // Mobile Search Bar
 
 .search-bar {
+  z-index: 1000;
   border-bottom: 1px solid $color-border;
   padding: 0 ($gutter-site / 2);
-  z-index: 1000;
 }
 
 .search-bar__table {

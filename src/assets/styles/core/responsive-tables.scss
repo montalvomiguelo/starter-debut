@@ -43,11 +43,11 @@
 
     &::after {
       content: '';
-      display: block;
       position: absolute;
-      top: 0;
       left: $gutter-site / 2;
       right: $gutter-site / 2;
+      top: 0;
+      display: block;
       border-bottom: 1px solid $color-border;
     }
   }
