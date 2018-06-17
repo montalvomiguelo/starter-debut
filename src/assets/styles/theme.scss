@@ -4,6 +4,7 @@
  * [replace with theme name] | Built with Slate
  */
 @import '~normalize.css/normalize';
+@import '~slick-carousel/slick/slick';
 
 // Settings
 @import './variables';
@@ -51,6 +52,7 @@
 @import './components/product-featured-img';
 @import './components/product';
 @import './components/price-item';
+@import './components/slick-theme';
 
 // Sections
 @import './sections/blog-posts';

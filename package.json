@@ -35,7 +35,8 @@
     "lazysizes": "^4.0.2",
     "lodash-es": "^4.17.4",
     "normalize.css": "^7.0.0",
-    "prepare-transition": "^0.1.1"
+    "prepare-transition": "^0.1.1",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "slate-tools start",

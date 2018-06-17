@@ -76,7 +76,7 @@
               <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
             </button>
           {% endif %}
-          <ul class="grid grid--uniform product-single__thumbnails product-single__thumbnails-{{ section.id }}">
+          <ul class="grid grid--uniform product-single__thumbnails product-single__thumbnails-{{ section.id }}" data-product-thumbnails-wrapper>
             {% for image in product.images %}
               <li class="grid__item {{ product_thumbnail_width }} product-single__thumbnails-item js">
                 <a href="{{ image.src | img_url: product_image_zoom_size, scale: product_image_scale }}"

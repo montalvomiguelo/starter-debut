@@ -171,3 +171,16 @@ $grid-breakpoint-has-push: ($small, $medium-up);
 // Mobile nav
 $return-button-width: 55px;
 $nav-button-padding: 15px;
+
+// Slick theme
+$slick-font-family: 'slick-icons, sans-serif';
+$slick-arrow-color: $color-slideshow-arrows;
+$slick-dot-color: $color-slideshow-dots;
+$slick-dot-color-active: $slick-dot-color !default;
+$slick-prev-character: '\2190';
+$slick-next-character: '\2192';
+$slick-dot-character: '\2022';
+$slick-dot-size: 6px;
+$slick-opacity-default: 0.75;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 0.25;

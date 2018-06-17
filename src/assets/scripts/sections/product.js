@@ -10,6 +10,8 @@ import $ from 'jquery';
 import Variants from '@shopify/theme-variants';
 import {formatMoney} from '@shopify/theme-currency';
 import sections from '@shopify/theme-sections';
+import enquire from 'enquire.js';
+import 'slick-carousel';
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -23,6 +25,7 @@ const selectors = {
   productJson: '[data-product-json]',
   productPrice: '[data-product-price]',
   productThumbs: '[data-product-single-thumbnail]',
+  productThumbsWrapper: '[data-product-thumbnails-wrapper]',
   singleOptionSelector: '[data-single-option-selector]',
   regularPrice: '[data-regular-price]',
   salePrice: '[data-sale-price]',
@@ -53,9 +56,68 @@ sections.register('product', {
       $(selectors.productJson, this.$container).html(),
     );
 
+    this.settings = {
+      mediaQueryMediumUp: 'screen and (min-width: 750px)',
+      mediaQuerySmall: 'screen and (max-width: 749px)',
+      bpSmall: false,
+      enableHistoryState: this.$container.data('enable-history-state') || false,
+      namespace: `.slideshow-${this.id}`,
+      sliderActive: false,
+      zoomEnabled: $(selectors.productImageWrapper, this.$container).hasClass('js-zoom-enabled'),
+    };
+
+    this.initBreakpoints();
     this.initVariants();
     this.initImageSwitch();
     this.setActiveThumbnail();
+  },
+
+  initBreakpoints() {
+    const self = this;
+
+    enquire.register(this.settings.mediaQuerySmall, {
+      match() {
+        if ($(selectors.productThumbs).length > 3) {
+          self.initThumbnailSlider();
+        }
+        self.settings.bpSmall = true;
+      },
+
+      unmatch() {
+        if (self.settings.sliderActive) {
+          self.destroyThumbnailSlider();
+        }
+        self.settings.bpSmall = false;
+      },
+    });
+  },
+
+  initThumbnailSlider() {
+    const options = {
+      slidesToShow: 4,
+      slidesToScroll: 3,
+      infinite: false,
+      prevArrow: `.thumbnails-slider__prev--${this.id}`,
+      nextArrow: `.thumbnails-slider__next--${this.id}`,
+      responsive: [
+        {
+          breakpoint: 321,
+          settings: {
+            slidesToShow: 3,
+          },
+        },
+      ],
+    };
+
+    $(selectors.productThumbsWrapper).slick(options);
+
+    this.settings.sliderActive = true;
+  },
+
+  destroyThumbnailSlider() {
+    $(selectors.productThumbsWrapper).slick('unslick');
+
+    this.settings.sliderActive = false;
   },
 
   initVariants() {
