@@ -1,0 +1,27 @@
+.rich-text {
+  p {
+    font-size: inherit;
+  }
+}
+
+.rich-text__heading--large {
+  font-size: 1.4em;
+
+  h2 {
+    font-size: inherit;
+  }
+}
+.rich-text__heading--small {
+  font-size: 0.88em;
+
+  h2 {
+    font-size: inherit;
+  }
+}
+
+.rich-text__text--large {
+  font-size: calc(#{$font-size-base} * 1.15);
+}
+.rich-text__text--small {
+  font-size: calc(#{$font-size-base} * 0.88);
+}
