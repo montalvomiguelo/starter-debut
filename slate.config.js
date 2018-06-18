@@ -19,7 +19,11 @@ module.exports = {
           rules: [
             {
               test: require.resolve('prepare-transition/preparetransition'),
-              use: 'imports-loader?$=jquery,jQuery=jquery',
+              use: 'imports-loader?jQuery=jquery',
+            },
+            {
+              test: require.resolve('jquery-zoom'),
+              use: 'imports-loader?window.jQuery=jquery',
             },
           ],
         },
@@ -30,7 +34,11 @@ module.exports = {
           rules: [
             {
               test: require.resolve('prepare-transition/preparetransition'),
-              use: 'imports-loader?$=jquery,jQuery=jquery',
+              use: 'imports-loader?jQuery=jquery',
+            },
+            {
+              test: require.resolve('jquery-zoom'),
+              use: 'imports-loader?window.jQuery=jquery',
             },
           ],
         },

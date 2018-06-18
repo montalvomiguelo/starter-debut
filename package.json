@@ -32,6 +32,7 @@
     "enquire.js": "^2.1.6",
     "imports-loader": "^0.8.0",
     "jquery": "^3.2.1",
+    "jquery-zoom": "^1.7.21",
     "lazysizes": "^4.0.2",
     "lodash-es": "^4.17.4",
     "normalize.css": "^7.0.0",

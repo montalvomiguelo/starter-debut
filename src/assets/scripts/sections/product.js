@@ -12,6 +12,7 @@ import {formatMoney} from '@shopify/theme-currency';
 import sections from '@shopify/theme-sections';
 import enquire from 'enquire.js';
 import 'slick-carousel';
+import 'jquery-zoom';
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -59,7 +60,6 @@ sections.register('product', {
     this.settings = {
       mediaQueryMediumUp: 'screen and (min-width: 750px)',
       mediaQuerySmall: 'screen and (max-width: 749px)',
-      bpSmall: false,
       enableHistoryState: this.$container.data('enable-history-state') || false,
       namespace: `.slideshow-${this.id}`,
       sliderActive: false,
@@ -77,18 +77,41 @@ sections.register('product', {
 
     enquire.register(this.settings.mediaQuerySmall, {
       match() {
-        if ($(selectors.productThumbs).length > 3) {
+        // initialize thumbnail slider on mobile if more than three thumbnails
+        if ($(selectors.productThumbs, this.$container).length > 3) {
           self.initThumbnailSlider();
         }
-        self.settings.bpSmall = true;
+
+        // destroy image zooming if enabled
+        if (self.settings.zoomEnabled) {
+          $(selectors.productImageWrapper, this.$container).each((index, element) => self.destroyZoom(element));
+        }
       },
 
       unmatch() {
         if (self.settings.sliderActive) {
           self.destroyThumbnailSlider();
         }
-        self.settings.bpSmall = false;
       },
+    });
+
+    enquire.register(this.settings.mediaQueryMediumUp, {
+      match() {
+        if (self.settings.zoomEnabled) {
+          $(selectors.productImageWrapper, this.$container).each((index, element) => self.enableZoom(element));
+        }
+      },
+    });
+  },
+
+  destroyZoom(element) {
+    $(element).trigger('zoom.destroy');
+  },
+
+  enableZoom(element) {
+    const zoomUrl = $(element).data('zoom');
+    $(element).zoom({
+      url: zoomUrl,
     });
   },
 
@@ -109,13 +132,15 @@ sections.register('product', {
       ],
     };
 
-    $(selectors.productThumbsWrapper).slick(options);
+    const $thumbnailSlider = $(selectors.productThumbsWrapper, this.$container);
+    $($thumbnailSlider).slick(options);
 
     this.settings.sliderActive = true;
   },
 
   destroyThumbnailSlider() {
-    $(selectors.productThumbsWrapper).slick('unslick');
+    const $thumbnailSlider = $(selectors.productThumbsWrapper, this.$container);
+    $($thumbnailSlider).slick('unslick');
 
     this.settings.sliderActive = false;
   },
@@ -129,7 +154,6 @@ sections.register('product', {
       product: this.productSingleObject,
     };
 
-    this.settings = {};
     this.variants = new Variants(options);
 
     this.$container.on(
@@ -147,11 +171,11 @@ sections.register('product', {
   },
 
   initImageSwitch() {
-    if (!$(selectors.productThumbs).length) {
+    if (!$(selectors.productThumbs, this.$container).length) {
       return;
     }
 
-    $(selectors.productThumbs).on('click', (evt) => {
+    $(selectors.productThumbs, this.$container).on('click', (evt) => {
       evt.preventDefault();
       const $el = $(evt.currentTarget);
 
@@ -169,14 +193,16 @@ sections.register('product', {
     if (typeof id === 'undefined') {
       id = $(
         `${selectors.productImageWrapper}:not(".${cssClasses.hide}")`,
+        this.$container,
       ).data('image-id');
     }
 
     const $thumbnail = $(
       `${selectors.productThumbs}[data-thumbnail-id="${id}"]`,
+      this.$container,
     );
 
-    $(selectors.productThumbs)
+    $(selectors.productThumbs, this.$container)
       .removeClass(cssClasses.activeThumbnail)
       .removeAttr('aria-current');
 
