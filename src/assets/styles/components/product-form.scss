@@ -94,3 +94,9 @@
     margin-top: 10px;
   }
 }
+
+@include media-query($medium-up) {
+  .product-form__cart-submit--small {
+    max-width: 300px;
+  }
+}
