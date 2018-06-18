@@ -1,9 +1,9 @@
 {%- assign color = adaptive-color -%}
 {%- assign color_brightness = color | color_brightness -%}
 
-{%- if color_brightness -%}
+{%- if color_brightness <= 26 -%}
   {{- color | color_lighten: 25 -}}
-{%- else -%}
+{%- elsif color_brightness <= 64 -%}
   {{- color | color_lighten: 15 -}}
 {%- else -%}
   {{- color | color_darken: 10 -}}
