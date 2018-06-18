@@ -1,42 +1,51 @@
-{%- comment -%}
-  This is a required section for the Shopify Theme Store.
-  It is available when you add "Newsletter" section on the Theme Editor.
-
-  Theme Store required settings
-  - Heading: title of the newsletter section
-  - Subheading: description of the newsletter section
-{%- endcomment -%}
-<section>
-  {% if section.settings.section_title != blank %}
-    <label for="Email">{{ section.settings.section_title | escape }}</label>
-  {% endif %}
-  {% if section.settings.subheading != blank %}
-    <p>{{ section.settings.subheading | escape }}</p>
-  {% endif %}
-
-  {% form 'customer' %}
-    {{ form.errors | default_errors }}
-    {% if form.posted_successfully? %}
-      <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
-    {% else %}
-      <input type="hidden" name="contact[tags]" value="newsletter">
-      <input type="email"
-        name="contact[email]"
-        id="Email"
-        value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
-        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
-        autocorrect="off"
-        autocapitalize="off">
-      <button type="submit" name="commit" id="Subscribe">
-        <span>{{ 'general.newsletter_form.submit' | t }}</span>
-      </button>
-    {% endif %}
-  {% endform %}
-</section>
+<div class="newsletter-section{% if section.settings.show_background %} index-section--newsletter-background{% endif %}">
+  <div class="page-width text-center">
+    <div class="section-header text-center">
+      {% if section.settings.section_title != blank %}
+        <h2 class="h2">{{ section.settings.section_title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="rte">{{ section.settings.subheading }}</div>
+      {% endif %}
+    </div>
+    {% form 'customer' %}
+      {%- if form.errors -%}
+        <div class="form-message form-message--error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+      {% if form.posted_successfully? %}
+        <p class="form-message form-message--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+      {% else %}
+        <div class="input-group password__input-group">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email"
+            name="contact[email]"
+            id="Email"
+            class="input-group__field newsletter__input"
+            value="{% if customer %}{{ customer.email }}{% endif %}"
+            placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+            aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+            {%- if form.errors -%}
+              aria-invalid="true"
+            {%- endif -%}
+            autocorrect="off"
+            autocapitalize="off">
+          <span class="input-group__btn">
+            <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+              <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span>
+        </div>
+      {% endif %}
+    {% endform %}
+  </div>
+</div>
 
 {% schema %}
   {
     "name": "Newsletter",
+    "class": "index-section index-section--flush",
     "settings": [
       {
         "type": "text",
@@ -45,10 +54,16 @@
         "default": "Subscribe to our newsletter"
       },
       {
-        "type": "text",
+        "type": "richtext",
         "id": "subheading",
         "label": "Subheading",
-        "default": "A short sentence describing what someone will receive by subscribing"
+        "default": "<p>A short sentence describing what someone will receive by subscribing</p>"
+      },
+      {
+        "id": "show_background",
+        "type": "checkbox",
+        "label": "Show background",
+        "default": true
       },
       {
         "type": "paragraph",
