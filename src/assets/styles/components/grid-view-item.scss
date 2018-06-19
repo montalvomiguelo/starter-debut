@@ -8,6 +8,7 @@
 .grid-view-item__title {
   margin-bottom: 0;
   color: $color-text;
+  @include font-weight($font-weight-header);
 }
 
 .grid-view-item__meta {

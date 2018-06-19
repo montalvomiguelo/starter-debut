@@ -301,8 +301,8 @@
   }
 }
 
-@mixin font-weight() {
+@mixin font-weight($default-weight: 400) {
   font-weight: calc(
-    #{$font-weight-header--bold} * #{$font-bold-titles} + #{$font-weight-default} * (1 - #{$font-bold-titles})
+    #{$font-weight-header--bold} * #{$font-bold-titles} + #{$default-weight} * (1 - #{$font-bold-titles})
   );
 }
