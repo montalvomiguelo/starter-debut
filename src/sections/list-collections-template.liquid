@@ -1,0 +1,200 @@
+<div class="page-width">
+  <header class="section-header text-center">
+    <h1>{{ page_title }}</h1>
+  </header>
+
+  {%- assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+
+  {% case section.settings.grid %}
+    {% when 2 %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {%- assign image_size = '530x' -%}
+    {% when 3 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+      {%- assign image_size = '350x' -%}
+    {% when 4 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+      {%- assign image_size = '250x' -%}
+    {% when 5 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+      {%- assign image_size = '225x' -%}
+  {% endcase %}
+
+  <div class="grid grid--uniform">
+    {% if section.settings.display_type == 'all' %}
+      {% case section.settings.sort %}
+        {% when 'products_high' or 'products_low' %}
+          {%- assign collections = collections | sort: 'all_products_count' -%}
+        {% when 'date' or 'date_reversed' %}
+          {%- assign collections = collections | sort: 'published_at' -%}
+      {% endcase %}
+      {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
+        {% for collection in collections %}
+          <div class="grid__item {{ grid_item_width }}">
+            {% include 'collection-grid-item', collection_image_size: image_size %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for collection in collections reversed %}
+          <div class="grid__item {{ grid_item_width }}">
+            {% include 'collection-grid-item', collection_image_size: image_size %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      {% for block in section.blocks %}
+        <div class="grid__item {{ grid_item_width }}">
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item', collection_image_size: image_size %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": {
+      "en": "Collections list page",
+      "de": "Kategorien-Liste Seite",
+      "fr": "Liste des collections"
+    },
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": {
+          "en": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections.",
+          "de": "Alle kategorien sind automatisch gelistet. Zum Ändern der Liste wählen Sie 'Ausgewählt' und fügen Sie Kategorien hinzu.",
+          "fr": "Toutes vos collections sont listées par défaut. Pour personaliser votre liste, cliquez sur « Sélection » et ajoutez des collections."
+        }
+      },
+      {
+        "type": "radio",
+        "id": "display_type",
+        "label": {
+          "en": "Select collections to show",
+          "de": "Collections auswählen, die angezeigt werden sollen",
+          "fr": "Sélectionner les collections à afficher"
+        },
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": {
+              "en": "All",
+              "de": "Alle",
+              "fr": "Toutes"
+            }
+          },
+          {
+            "value": "selected",
+            "label": {
+              "en": "Selected",
+              "de": "Ausgewählt",
+              "fr": "Sélection"
+            }
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": {
+          "en": "Sort collections by:",
+          "de": "Kategorien sortieren nach:",
+          "fr": "Trier les collections par: "
+        },
+        "info": {
+          "en": "Sorting only applies when 'All' is selected",
+          "de": "Sortieren funktioniert nur, wenn 'Alle' ausgewählt ist",
+          "fr": "Le tri ne s'applique que lorsque “Toutes“ est sélectionné"
+        },
+        "default": "alphabetical",
+        "options": [
+          {
+            "value": "products_high",
+            "label": {
+              "en": "Product count, high to low",
+              "de": "Produktanzahl, hoch zu niedrig",
+              "fr": "Nombre de produits, ordre décroissant"
+            }
+          },
+          {
+            "value": "products_low",
+            "label": {
+              "en": "Product count, low to high",
+              "de": "Produktanzahl, niedrig zu hoch",
+              "fr": "Nombre de produits, ordre croissant"
+            }
+          },
+          {
+            "value": "alphabetical",
+            "label": {
+              "en": "Alphabetically, A-Z",
+              "de": "Alphabetisch, A-Z",
+              "fr": "Alphabétique, A-Z"
+            }
+          },
+          {
+            "value": "alphabetical_reversed",
+            "label": {
+              "en": "Alphabetically, Z-A",
+              "de": "Alphabetisch, Z-A",
+              "fr": "Alphabétique, Z-A"
+            }
+          },
+          {
+            "value": "date",
+            "label": {
+              "en": "Date, old to new",
+              "de": "Datum, alt zu neu",
+              "fr": "Date, anciennes à récentes"
+            }
+          },
+          {
+            "value": "date_reversed",
+            "label": {
+              "en": "Date, new to old",
+              "de": "Datum, neu zu alt",
+              "fr": "Date, récentes à anciennes"
+            }
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": {
+          "en": "Collections per row",
+          "de": "Kategorien per Reihe",
+          "fr": "Collections par rangée"
+        },
+        "default": 3,
+        "min": 2,
+        "max": 5,
+        "step": 1
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": {
+          "en": "Collection",
+          "de": "Kategorie",
+          "fr": "Collection"
+        },
+        "settings": [
+          {
+            "label": {
+              "en": "Collection",
+              "de": "Kategorie",
+              "fr": "Collection"
+            },
+            "id": "collection",
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
