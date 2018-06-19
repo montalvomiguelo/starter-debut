@@ -1,0 +1,136 @@
+.list-view-item {
+  margin-bottom: $gutter-site-mobile;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-query($medium-up) {
+    border-bottom: 1px solid $color-border;
+    padding-bottom: $gutter-site-mobile;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+}
+
+.list-view-item__link {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.list-view-item__image {
+  max-height: 95px;
+}
+
+.list-view-item__image-column {
+  display: table-cell;
+  vertical-align: middle;
+  width: 130px;
+
+  @include media-query($small) {
+    width: 85px;
+  }
+}
+
+.list-view-item__image-wrapper {
+  position: relative;
+  margin-right: $section-spacing-small;
+
+  @include media-query($small) {
+    margin-right: $section-spacing-small / 2;
+  }
+}
+
+.list-view-item__title-column {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.list-view-item__title {
+  color: $color-text;
+  font-size: calc(#{$font-size-base} + 2px);
+  min-width: 100px;
+
+  @if $font-bold-titles {
+    font-weight: $font-weight-header--bold;
+  }
+
+  @include media-query($small) {
+    font-size: calc(#{$font-size-base} - 1px);
+  }
+}
+
+.list-view-item__sold-out {
+  font-size: calc(#{$font-size-base} - 1px);
+}
+
+.list-view-item__on-sale {
+  color: $color-sale-text;
+  font-size: calc(#{$font-size-base} - 1px);
+
+  @include media-query($small) {
+    display: none;
+  }
+}
+
+.list-view-item__vendor-column {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+}
+
+.list-view-item__vendor {
+  font-size: calc(#{$font-size-base} - 1px);
+  font-style: italic;
+
+  @include media-query($small) {
+    font-size: calc(#{$font-size-base} - 2px);
+  }
+}
+
+.list-view-item__price-column {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  width: 20%;
+  font-size: calc(#{$font-size-base} + 1px);
+
+  @include media-query($small) {
+    font-size: calc(#{$font-size-base} - 1px);
+  }
+
+  .price__vendor,
+  .price-item__label {
+    display: none;
+  }
+
+  .price__regular,
+  .price__sale {
+    flex-basis: 100%;
+  }
+}
+
+.list-view-item__price {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-view-item__price--reg {
+  color: $color-sale-text;
+
+  @include media-query($small) {
+    display: block;
+  }
+}
+
+.list-view-item__price--sale {
+  @include media-query($small) {
+    display: block;
+  }
+}
