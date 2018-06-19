@@ -19,6 +19,7 @@
   transform: translateY(-50%);
   transition: $transition-link-hover;
   text-shadow: 0 0 4px $color-text-shadow;
+  @include font-weight($font-weight-header);
 
   @include media-query($medium-up) {
     padding: 0 15px;
