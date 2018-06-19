@@ -300,3 +300,9 @@
     text-align: center !important;
   }
 }
+
+@mixin font-weight() {
+  font-weight: calc(
+    #{$font-weight-header--bold} * #{$font-bold-titles} + #{$font-weight-default} * (1 - #{$font-bold-titles})
+  );
+}

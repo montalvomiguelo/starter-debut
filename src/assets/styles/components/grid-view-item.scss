@@ -8,10 +8,8 @@
 .grid-view-item__title {
   margin-bottom: 0;
   color: $color-text;
-  @if $font-bold-titles {
-    font-weight: $font-weight-header--bold;
-  }
 }
+
 .grid-view-item__meta {
   margin-top: 8px;
 }
@@ -19,7 +17,7 @@
 @include media-query($small) {
   .grid-view-item__title,
   .grid-view-item__meta {
-    font-size: em($font-size-base - 1px);
+    font-size: calc(#{$font-size-base} - 1px);
   }
 }
 
@@ -31,10 +29,10 @@
 .grid-view-item__vendor {
   margin-top: 4px;
   color: $color-body-text;
-  font-size: em($font-size-base - 2px);
+  font-size: calc(#{$font-size-base} - 2px);
   text-transform: uppercase;
   @include media-query($small) {
-    font-size: em($font-size-base - 3px);
+    font-size: calc(#{$font-size-base} - 3px);
   }
 }
 

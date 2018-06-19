@@ -54,10 +54,7 @@
   color: $color-text;
   font-size: calc(#{$font-size-base} + 2px);
   min-width: 100px;
-
-  @if $font-bold-titles {
-    font-weight: $font-weight-header--bold;
-  }
+  @include font-weight;
 
   @include media-query($small) {
     font-size: calc(#{$font-size-base} - 1px);

@@ -20,10 +20,6 @@
   transition: $transition-link-hover;
   text-shadow: 0 0 4px $color-text-shadow;
 
-  @if $font-bold-titles {
-    font-weight: $font-weight-header--bold;
-  }
-
   @include media-query($medium-up) {
     padding: 0 15px;
   }

@@ -1,5 +1,5 @@
 @include media-query($medium-up) {
   .featured-row__subtext {
-    font-size: em($font-size-base + 2);
+    font-size: calc(#{$font-size-base} + 2px);
   }
 }
