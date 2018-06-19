@@ -1,0 +1,20 @@
+.comment {
+  margin-bottom: $grid-gutter;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.comment__content {
+  margin-bottom: 5px;
+}
+
+.comment__meta-item {
+  margin-right: 10px;
+  font-size: 14px;
+
+  &:first-child::before {
+    content: '\2014 \0020';
+  }
+}

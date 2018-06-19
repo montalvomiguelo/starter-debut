@@ -1,0 +1,62 @@
+<div class="section-header text-center">
+  <h1 class="article__title">{{ article.title }}</h1>
+  {% if section.settings.blog_show_author %}
+    <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+  {% endif %}
+
+  {% if section.settings.blog_show_date %}
+    <span class="article__date">
+      {{ article.published_at | time_tag: format: 'month_day_year' }}
+    </span>
+  {% endif %}
+</div>
+
+<div class="rte">
+  {{ article.content }}
+</div>
+
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": {
+      "en": "Posts",
+      "de": "Posts",
+      "fr": "Articles"
+    },
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": {
+          "en": "Show author",
+          "de": "Autor anzeigen",
+          "fr": "Afficher l'auteur"
+        },
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": {
+          "en": "Show date",
+          "de": "Datum anzeigen",
+          "fr": "Afficher la date"
+        },
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": {
+          "en": "Show social sharing buttons",
+          "de": "Buttons für Social Media anzeigen",
+          "fr": "Afficher les boutons de partage sur les médias sociaux"
+        },
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
