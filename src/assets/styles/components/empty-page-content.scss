@@ -1,0 +1,8 @@
+.empty-page-content {
+  padding: 125px $gutter-site;
+
+  @include media-query($small) {
+    padding-left: $gutter-site-mobile;
+    padding-right: $gutter-site-mobile;
+  }
+}

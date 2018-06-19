@@ -1,0 +1,282 @@
+.cart {
+  th,
+  td {
+    border: 0;
+  }
+
+  td {
+    padding: $gutter-site-mobile 0;
+  }
+
+  th {
+    font-weight: $font-weight-body;
+    padding: ($gutter-site / 2) 0;
+  }
+
+  .cart__meta {
+    padding-right: 15px;
+  }
+}
+
+.cart__meta-text {
+  padding: 5px 0;
+  font-size: calc(#{$font-size-base} - 2px);
+  font-style: italic;
+}
+
+.cart__qty-label {
+  @include visually-hidden;
+}
+
+.cart__qty-input {
+  text-align: center;
+  width: 60px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  @include media-query($small) {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}
+
+.cart__edit {
+  margin-top: 10px;
+}
+
+.cart__edit-text--cancel {
+  .cart__edit--active & {
+    display: none;
+  }
+}
+
+.cart__edit-text--edit {
+  display: none;
+
+  .cart__edit--active & {
+    display: block;
+  }
+}
+
+.cart__edit-text--cancel,
+.cart__edit-text--edit {
+  pointer-events: none;
+}
+
+.cart__row {
+  p {
+    margin-bottom: 0;
+
+    // stylelint-disable-next-line
+    + p {
+      margin-top: 10px;
+    }
+  }
+}
+
+.cart__subtotal-title {
+  font-size: calc(#{$font-size-base} + 2px);
+}
+
+.cart__subtotal {
+  padding-left: $gutter-site / 2;
+
+  @include media-query($medium-up) {
+    padding-left: $gutter-site;
+    min-width: 150px;
+    display: inline-block;
+  }
+}
+
+.cart__savings {
+  padding-top: 18px;
+}
+
+.cart__savings-amount {
+  padding-left: $gutter-site / 2;
+
+  @include media-query($medium-up) {
+    padding-left: $gutter-site;
+    min-width: 150px;
+    display: inline-block;
+  }
+}
+
+.cart__footer {
+  padding-top: $section-spacing-small;
+}
+
+.cart__update--large {
+  margin-right: 10px;
+}
+
+.cart__continue--large {
+  margin-right: 10px;
+  line-height: 1.2;
+}
+
+.cart__shipping {
+  font-style: italic;
+  font-size: calc(#{$font-size-base} - 2px);
+  padding: 18px 0 20px;
+}
+
+.cart-note__label,
+.cart-note__input {
+  display: block;
+
+  @include media-query($small) {
+    margin: 0 auto;
+  }
+}
+
+.cart-note__label {
+  margin-bottom: 15px;
+}
+
+.cart-note__input {
+  min-height: 50px;
+  width: 100%;
+
+  @include media-query($small) {
+    margin-bottom: 40px;
+  }
+}
+
+.cart__image {
+  max-height: 95px;
+}
+
+.cart__image-wrapper a {
+  display: block;
+  padding-right: $section-spacing-small / 2;
+
+  @include media-query($medium-up) {
+    padding-right: $section-spacing-small;
+  }
+}
+
+@include media-query($medium-up) {
+  .cart__image-wrapper {
+    width: 130px;
+  }
+
+  .cart__meta {
+    max-width: 300px;
+  }
+
+  .cart__remove {
+    margin-top: 4px;
+  }
+
+  .cart__qty {
+    text-align: center;
+  }
+}
+
+@include media-query($small) {
+  .cart {
+    table {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr,
+    tbody {
+      width: 100%;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    .cart__update-wrapper {
+      display: none;
+      padding-top: 0;
+      padding-bottom: $gutter-site-mobile;
+    }
+  }
+
+  .cart__update--show {
+    td {
+      padding-bottom: 10px;
+    }
+
+    .cart__update-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  .cart-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .cart-flex-item {
+    display: block;
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .cart__meta {
+    flex: 1 1 0%;
+  }
+
+  .cart__image-wrapper {
+    flex: 0 0 85px;
+  }
+
+  .cart__price-wrapper {
+    flex: 0 1 24%;
+    text-align: right;
+  }
+
+  .cart__header {
+    @include visually-hidden;
+  }
+
+  .cart-message {
+    padding-top: 20px;
+  }
+
+  .cart__qty {
+    padding: 0 10px;
+  }
+
+  .cart__qty-label {
+    @include visually-shown;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    margin-right: 5px;
+  }
+}
+
+.cart__continue-btn {
+  .cart--no-cookies & {
+    display: none;
+  }
+}
+
+.cart--empty-message {
+  .cart--no-cookies & {
+    display: none;
+  }
+}
+
+.cookie-message {
+  display: none;
+  padding-bottom: 25px;
+
+  .cart--no-cookies & {
+    display: block;
+  }
+}
