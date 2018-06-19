@@ -1,0 +1,62 @@
+{%- assign header_font = settings.type_header_font -%}
+{%- assign base_font = settings.type_base_font -%}
+{%- assign font_bold_titles = 0 -%}
+
+{%- if settings.type_bold_product_titles -%}
+  {%- assign header_font_bold = header_font | font_modify: 'weight', 'bolder' -%}
+  {%- assign font_bold_titles = 1 -%}
+{%- endif -%}
+
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+
+{%- capture color_text_focus -%}
+  {%- assign color = settings.color_text -%}
+  {%- assign color_brightness = color | color_brightness -%}
+  {%- if color_brightness <= 26 -%}
+    {{- color | color_lighten: 25 -}}
+  {%- elsif color_brightness <= 64 -%}
+    {{- color | color_lighten: 15 -}}
+  {%- else -%}
+    {{- color | color_darken: 10 -}}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture color_overlay_text_focus -%}
+  {%- assign color = settings.color_image_overlay_text -%}
+  {%- assign color_brightness = color | color_brightness -%}
+  {%- if color_brightness <= 26 -%}
+    {{- color | color_lighten: 25 -}}
+  {%- elsif color_brightness <= 64 -%}
+    {{- color | color_lighten: 15 -}}
+  {%- else -%}
+    {{- color | color_darken: 10 -}}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture color_btn_primary_focus -%}
+  {%- assign color = settings.color_button  -%}
+  {%- assign color_brightness = color | color_brightness -%}
+  {%- if color_brightness <= 26 -%}
+    {{- color | color_lighten: 25 -}}
+  {%- elsif color_brightness <= 64 -%}
+    {{- color | color_lighten: 15 -}}
+  {%- else -%}
+    {{- color | color_darken: 10 -}}
+  {%- endif -%}
+{% endcapture %}
+
+{%- capture color_small_button_focus -%}
+  {%- assign color = settings.color_small_button  -%}
+  {%- assign color_brightness = color | color_brightness -%}
+  {%- if color_brightness <= 26 -%}
+    {{- color | color_lighten: 25 -}}
+  {%- elsif color_brightness <= 64 -%}
+    {{- color | color_lighten: 15 -}}
+  {%- else -%}
+    {{- color | color_darken: 10 -}}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture icon_svg_select -%}url({{ "icon-select.svg" | asset_url }}){%- endcapture -%}

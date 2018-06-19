@@ -1,19 +1,8 @@
-<style>
-  {%- assign header_font = settings.type_header_font -%}
-  {%- assign base_font = settings.type_base_font -%}
-  {%- assign font_bold_titles = 0 -%}
+{%- include 'liquid-variables' -%}
 
+<style>
   {{ header_font | font_face }}
   {{ base_font | font_face }}
-
-  {%- if settings.type_bold_product_titles -%}
-    {%- assign header_font_bold = header_font | font_modify: 'weight', 'bolder' -%}
-    {%- assign font_bold_titles = 1 -%}
-  {%- endif -%}
-
-  {%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
-  {%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
-  {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
 
   {{ header_font_bold | font_face }}
   {{ base_font_bold | font_face }}
@@ -39,11 +28,6 @@
 
     --opacity-image-overlay: {{ settings.image_overlay_opacity | divided_by: 100.00 }};
 
-    {% capture color_text_focus %}{%- include 'adaptive-color' with settings.color_text -%}{%- endcapture -%}
-    {% capture color_overlay_text_focus %}{%- include 'adaptive-color' with settings.color_image_overlay_text -%}{%- endcapture -%}
-    {% capture color_btn_primary_focus %}{%- include 'adaptive-color' with settings.color_button -%}{%- endcapture -%}
-    {% capture color_small_button_focus %}{%- include 'adaptive-color' with settings.color_small_button -%}{%- endcapture -%}
-
     --color-text-focus: {{ color_text_focus }};
     --color-overlay-text-focus: {{ color_overlay_text_focus }};
     --color-btn-primary-focus: {{ color_btn_primary_focus }};
@@ -51,7 +35,6 @@
 
     --color-border-form-focus: {{ settings.color_text | color_darken: 10 | color_to_rgb | color_modify: 'alpha', 0.85 }};
 
-    {% capture icon_svg_select %}url({{ 'icon-select.svg' | asset_url }}){%- endcapture -%}
     --icon-svg-select: {{ icon_svg_select }};
 
     --font-weight-body--bold: {{ base_font_bold.weight | default: 700 }};
