@@ -1,0 +1,10 @@
+.additional-checkout-buttons {
+  margin-top: $gutter-site-mobile;
+
+  // reset for paypal button
+  input[type='image'] {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+}
