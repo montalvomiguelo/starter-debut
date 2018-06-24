@@ -72,7 +72,7 @@
         {%- assign logo_classes = 'medium-up--one-quarter logo-align--left' -%}
       {% endif %}
 
-      <div class="grid__item small--one-half {{ logo_classes }}">
+      <div class="grid__item {{ logo_classes }}">
         {% comment %}
           Use the uploaded logo from theme settings if enabled.
           Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -118,7 +118,7 @@
         </nav>
       {% endif %}
 
-      <div class="grid__item small--one-half {% if section.settings.align_logo == 'left' %}medium-up--one-quarter{% else %}medium-up--one-third{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
+      <div class="grid__item {% if section.settings.align_logo == 'left' %}medium-up--one-quarter{% else %}medium-up--one-third{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
         <div class="site-header__icons-wrapper">
           {% if section.settings.align_logo == 'left' %}
             <div class="site-header__search site-header__icon small--hide">

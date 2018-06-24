@@ -39,7 +39,7 @@
 }
 
 .site-header__logo-image {
-  display: block;
+  display: inline-block;
 
   @include media-query($medium-up) {
     margin: 0 auto;
@@ -72,11 +72,19 @@
 .site-header__icons {
   position: relative;
   white-space: nowrap;
+
+  @include media-query($small) {
+    width: auto;
+  }
 }
 
 .site-header__icons-wrapper {
   position: relative;
   margin-right: -10px;
+
+  @include media-query($small) {
+    display: flex;
+  }
 }
 
 .site-header__cart,
@@ -164,8 +172,8 @@
 }
 
 .site-header__icon svg {
-  height: calc(20em / 16);
-  width: calc(20em / 16);
+  height: 23px;
+  width: 22px;
 
   @include media-query($medium-up) {
     margin-right: 3px;
@@ -190,23 +198,21 @@
   .site-header__icon {
     display: inline-block;
     vertical-align: middle;
-    padding: calc(12em / 16);
+    padding: 10px 11px;
     margin: 0;
   }
 }
 
-/*
-* Smaller screens do not have enough room for 44x44 px touch target
-* When there are 4 icons, reduce the padding
-*/
 @media screen and (max-width: 360px) {
-  .site-header__icons--plus .site-header__icon {
-    padding: calc(12em / 16) calc(6em / 16);
-  }
 }
 
 .site-header__mobile-nav {
   z-index: 999;
   position: relative;
   background-color: $color-body;
+
+  @include media-query($small) {
+    display: flex;
+    align-items: center;
+  }
 }
